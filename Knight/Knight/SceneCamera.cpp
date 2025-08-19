@@ -34,7 +34,7 @@ bool SceneCamera::Update(float ElapsedSeconds)
 	if (CameraMode != CAMERA_CUSTOM)
 		UpdateCamera(&_Camera, CameraMode);
 
-	__super::Update(ElapsedSeconds); // Call base class update
+	SceneObject::Update(ElapsedSeconds); // Call base class update
 
 	return true;
 }

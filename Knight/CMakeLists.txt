@@ -1,0 +1,4 @@
+subdirs(
+    Knight
+    Demo1
+)

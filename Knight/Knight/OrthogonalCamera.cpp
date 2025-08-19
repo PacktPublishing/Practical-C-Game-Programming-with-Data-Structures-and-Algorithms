@@ -22,7 +22,7 @@ bool OrthogonalCamera::Update(float ElapsedSeconds)
     if (!IsActive)
         return false;
 
-	__super::Update(ElapsedSeconds); // Call base class update
+	SceneCamera::Update(ElapsedSeconds); // Call base class update
 
     if (!_ProcessInput)
 		return true; // If input processing is disabled, skip further updates

@@ -45,7 +45,7 @@ void SceneObject::SetName(const char* Name)
 {
 	if (Name != nullptr)
 	{
-		strncpy_s(_Name, MAX_SCENE_OBJECT_NAME, Name, _TRUNCATE);
+		strncpy(_Name, Name, MAX_SCENE_OBJECT_NAME);
 	}
 }
 

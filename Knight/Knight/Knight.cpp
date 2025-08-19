@@ -52,7 +52,7 @@ void Knight::AfterCreateDefaultResources()
 	if (_Font.texture.id == 0 || _Font.glyphCount == 0)
 	{
 		TRACELOG(LOG_WARNING, "Knight: No default font loaded, using default font");
-		_Font = LoadFontEx("../../resources/fonts/mecha.png", 40, nullptr, 0);
+		_Font = LoadFontEx("../../../resources/fonts/mecha.png", 40, nullptr, 0);
 		if (_Font.texture.id == 0 || _Font.glyphCount == 0)
 		{
 			TRACELOG(LOG_ERROR, "SYSTEM: Failed to load default font");
@@ -213,7 +213,7 @@ void Knight::ExitGameLoop()
 void Knight::DrawFPS(int x, int y)
 {
 	char text[32];
-	sprintf_s(text, "FPS: %i", GetFPS());
+	snprintf(text, sizeof(text), "FPS: %i", GetFPS());
 	DrawTextEx(_Font, text, Vector2{ (float)x, (float)y }, 40, 3, WHITE);
 }
 
@@ -240,7 +240,7 @@ void Knight::SaveScreenshot(const char* fileName)
 	Image image = { imgData, SCREEN_WIDTH, SCREEN_HEIGHT, 1, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 };
 
 	char path[512] = { 0 };
-	strcpy_s(path, TextFormat("%s/%s", "./", GetFileName(fileName)));
+	strcpy(path, TextFormat("%s/%s", "./", GetFileName(fileName)));
 
 	ExportImage(image, path);
 	RL_FREE(imgData);
