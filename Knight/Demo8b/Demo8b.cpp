@@ -23,13 +23,13 @@ int main(int argc, char* argv[])
 
 void Demo8b::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	SetTargetFPS(60);
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{ 0.0f, 6.0f, -15.0f });
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0.0f, 0.0f, 30.0f });
 
@@ -87,17 +87,17 @@ void Demo8b::Update(float ElapsedSeconds)
 		auto animTransitionMode = AnimModelComponent->GetTransitionMode();
 		if (animTransitionMode == ModelComponent::eAnimTransitionMode::Immediate)
 		{
-			strcpy_s(strBuf1, 100, "Transition Mode: Linear");
+			strncpy(strBuf1, "Transition Mode: Linear", sizeof(strBuf1));
 			AnimModelComponent->SetTransitionMode(ModelComponent::eAnimTransitionMode::Linear);
 		}
 		else if (animTransitionMode == ModelComponent::eAnimTransitionMode::Linear)
 		{
-			strcpy_s(strBuf1, 100, "Transition Mode: EaseIn/EaseOut");
+			strncpy(strBuf1, "Transition Mode: EaseIn/EaseOut", sizeof(strBuf1));
 			AnimModelComponent->SetTransitionMode(ModelComponent::eAnimTransitionMode::EaseInEaseOut);
 		}
 		else
 		{
-			strcpy_s(strBuf1, 100, "Transition Mode: Immediate");
+			strncpy(strBuf1, "Transition Mode: Immediate", sizeof(strBuf1));
 			AnimModelComponent->SetTransitionMode(ModelComponent::eAnimTransitionMode::Immediate);
 		}
 	}
@@ -111,12 +111,12 @@ void Demo8b::Update(float ElapsedSeconds)
 		TimeScale -= 0.1f;
 	}
 
-	__super::Update(ElapsedSeconds * TimeScale);
+	Knight::Update(ElapsedSeconds * TimeScale);
 }
 
 void Demo8b::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 }
 
@@ -131,14 +131,14 @@ void Demo8b::DrawGUI()
 	
 	DrawText("Animation Mode: Linear", 10, 30, 30, GREEN);
 	DrawText(strBuf1, 10, 60, 30, GREEN);
-	sprintf_s(strBuf2, 100, "Time Scale: %.1f", TimeScale);
+	sprintf(strBuf2, "Time Scale: %.1f", TimeScale);
 	DrawText(strBuf2, 10, 90, 30, GREEN);
 }
 
 // Load default resources for the demo
 void Demo8b::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 
 	//Set the default light data

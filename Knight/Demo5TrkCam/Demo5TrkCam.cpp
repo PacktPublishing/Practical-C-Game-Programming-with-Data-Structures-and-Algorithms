@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 void Demo5TrkCam::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -60,7 +60,7 @@ void Demo5TrkCam::Update(float ElapsedSeconds)
 	if (angle > 360) angle -= 360; // Normalize angle to [0, 360)
 	Actor->Rotation = Vector3{ 0, angle, 0 };
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 
 }
 
@@ -69,13 +69,13 @@ void Demo5TrkCam::DrawFrame()
 {
 	OnRailCamera->Draw(); //render waypoint as cube
 	DrawGrid(50, 3.0f);
-	__super::DrawFrame();
+	Knight::DrawFrame();
 }
 
 //Display current status (on waypoint, or moving to next waypoint, etc.)
 void Demo5TrkCam::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	if (OnRailCamera->waypointWaitTimer > 0)
 		DrawText(TextFormat("Stop at waypoint #%d, wait time left=%1.2f", OnRailCamera->currentWaypoint, OnRailCamera->waypointWaitTimer), 10, 50, 40, WHITE);
@@ -86,6 +86,6 @@ void Demo5TrkCam::DrawGUI()
 // Load default resources for the demo
 void Demo5TrkCam::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

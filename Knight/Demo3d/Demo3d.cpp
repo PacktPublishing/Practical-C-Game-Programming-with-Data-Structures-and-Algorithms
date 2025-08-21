@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "Knight.h"
 #include "Demo3d.h"
 #include "Random.h"
@@ -23,7 +25,7 @@ void Demo3d::Start()
 {
 	char imageFile[IMAGE_FILENAME_BUFFER_SIZE];
 
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -39,7 +41,7 @@ void Demo3d::Start()
 		}
 
 		//Load card image
-		sprintf_s(imageFile, IMAGE_FILENAME_BUFFER_SIZE, "../../resources/textures/PokerDeckCards/%d.png", i);
+		snprintf(imageFile, IMAGE_FILENAME_BUFFER_SIZE, "../../resources/textures/PokerDeckCards/%d.png", i);
 		if (FileExists(imageFile))
 		{
 			CardImages[i] = LoadTexture(imageFile);
@@ -53,7 +55,7 @@ void Demo3d::EndGame()
 	{
 		UnloadTexture(CardImages[i]);
 	}
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 
@@ -69,7 +71,7 @@ void Demo3d::Update(float ElapsedSeconds)
 		SortDealtCards();
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 void Demo3d::DrawGUI()

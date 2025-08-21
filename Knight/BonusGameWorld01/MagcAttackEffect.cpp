@@ -69,7 +69,7 @@ void MagicAttackEffect::Draw(RenderHints* pRH)
 void MagicAttackEffect::Reset()
 {
     delayStart = 0.25f;
-    __super::Reset();
+    ParticleComponent::Reset();
     isEnabled = true; // Enable the effect when reset
 }
 

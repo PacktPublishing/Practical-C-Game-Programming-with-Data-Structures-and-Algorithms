@@ -27,7 +27,7 @@ Demo4iso::Demo4iso()
 void Demo4iso::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Image image = LoadImage("../../resources/textures/seasons_tiles.png");     // Loaded in CPU memory (RAM)
 	_mapTiles = LoadTextureFromImage(image);          // Image converted to texture, GPU memory (VRAM)
@@ -38,7 +38,7 @@ void Demo4iso::Start()
 void Demo4iso::EndGame()
 {
 	UnloadTexture(_mapTiles);
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 //Render the isometric map on the screen
@@ -63,6 +63,6 @@ void Demo4iso::DrawGUI()
 //Create default resources for the game
 void Demo4iso::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

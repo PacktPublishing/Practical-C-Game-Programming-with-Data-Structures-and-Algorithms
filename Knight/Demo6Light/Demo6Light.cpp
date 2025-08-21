@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 void Demo6Light::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -107,13 +107,13 @@ void Demo6Light::Update(float ElapsedSeconds)
 
 	for (int i = 0; i < MAX_LIGHTS; i++) UpdateLightValues(shader, lights[i]);
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Render the frame and light sources as colored spheres
 void Demo6Light::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	// Draw spheres to show where the lights are
 	for (int i = 0; i < MAX_LIGHTS; i++)
 	{
@@ -131,6 +131,6 @@ void Demo6Light::DrawGUI()
 //Create default resources for the demo
 void Demo6Light::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

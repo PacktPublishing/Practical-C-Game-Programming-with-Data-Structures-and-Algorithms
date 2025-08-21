@@ -2867,7 +2867,7 @@ int GuiValueBox(Rectangle bounds, const char *text, int *value, int minValue, in
     GuiState state = guiState;
 
     char textValue[RAYGUI_VALUEBOX_MAX_CHARS + 1] = "\0";
-    sprintf_s(textValue, "%i", *value);
+    sprintf(textValue, "%i", *value);
 
     Rectangle textBounds = { 0 };
     if (text != NULL)
@@ -4095,7 +4095,7 @@ void GuiLoadStyle(const char *fileName)
     // Try reading the files as text file first
     FILE* rgsFile = NULL;
     
-    fopen_s(&rgsFile, fileName, "rt");
+    rgsFile = fopen(fileName, "rt");
 
     if (rgsFile != NULL)
     {
@@ -4116,8 +4116,7 @@ void GuiLoadStyle(const char *fileName)
                     {
                         // Style property: p <control_id> <property_id> <property_value> <property_name>
 
-                        //sscanf(buffer, "p %d %d 0x%x", &controlId, &propertyId, &propertyValue);
-                        sscanf_s(buffer, "p %d %d 0x%x", &controlId, &propertyId, &propertyValue);
+                        sscanf(buffer, "p %d %d 0x%x", &controlId, &propertyId, &propertyValue);
                         GuiSetStyle(controlId, propertyId, (int)propertyValue);
 
                     } break;
@@ -4128,7 +4127,7 @@ void GuiLoadStyle(const char *fileName)
                         int fontSize = 0;
                         char charmapFileName[256] = { 0 };
                         char fontFileName[256] = { 0 };
-                        sscanf_s(buffer, "f %d %s %[^\r\n]s", &fontSize, charmapFileName, fontFileName);
+                        sscanf(buffer, "f %d %s %[^\r\n]s", &fontSize, charmapFileName, fontFileName);
 
                         Font font = { 0 };
                         int *codepoints = NULL;
@@ -4178,7 +4177,7 @@ void GuiLoadStyle(const char *fileName)
 
     if (tryBinary)
     {
-        fopen_s(&rgsFile, fileName, "rb");
+        rgsFile = fopen(fileName, "rb");
 
         if (rgsFile != NULL)
         {
@@ -4319,7 +4318,7 @@ const char *GuiIconText(int iconId, const char *text)
     if (text != NULL)
     {
         memset(buffer, 0, 1024);
-        sprintf_s(buffer, "#%03i#", iconId);
+        sprintf(buffer, "#%03i#", iconId);
 
         for (int i = 5; i < 1024; i++)
         {
@@ -4331,7 +4330,7 @@ const char *GuiIconText(int iconId, const char *text)
     }
     else
     {
-        sprintf_s(iconBuffer, "#%03i#", iconId);
+        sprintf(iconBuffer, "#%03i#", iconId);
 
         return iconBuffer;
     }
@@ -4373,7 +4372,7 @@ char **GuiLoadIcons(const char *fileName, bool loadIconsName)
     // }
 
     FILE* rgiFile = NULL;
-    fopen_s(&rgiFile, fileName, "rb");
+    rgiFile = fopen(fileName, "rb");
 
     char **guiIconsName = NULL;
 

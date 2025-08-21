@@ -29,7 +29,7 @@ void PlayerEntity::Update(float elaspedTime)
 	else {
 		rechargeTime += elaspedTime;
 	}
-	__super::Update(elaspedTime);
+	AliveEntity::Update(elaspedTime);
 }
 
 void PlayerEntity::DrawGUI()
@@ -60,7 +60,7 @@ void PlayerEntity::DrawGUI()
 
 void PlayerEntity::Die()
 {
-	__super::Die();
+	AliveEntity::Die();
 
 	Demo2f::Log("Player dies!");
 	Demo2f::GameOver(YouLose);

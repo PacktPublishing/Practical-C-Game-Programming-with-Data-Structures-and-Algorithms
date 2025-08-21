@@ -19,14 +19,14 @@ int main(int argc, char* argv[])
 
 void Demo8a::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	FrameRate = 30;
 	SetTargetFPS(FrameRate);
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{0.0f, 20.0f, -30.0f});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0.0f, 0.0f, 30.0f });
 
@@ -74,14 +74,14 @@ void Demo8a::Update(float ElapsedSeconds)
 		{
 		case ModelComponent::eAnimMode::Default :
 			newMode = ModelComponent::eAnimMode::Linear_interpolation;
-			strcpy_s(AnimMode, 50, "Animation Mode : Linear");
+			strncpy(AnimMode, "Animation Mode : Linear", sizeof(AnimMode));
 			break;
 		case ModelComponent::eAnimMode::Linear_interpolation :
 			newMode = ModelComponent::eAnimMode::Exponential_interpolation;
-			strcpy_s(AnimMode, 50, "Animation Mode : Exponential");
+			strncpy(AnimMode, "Animation Mode : Exponential", sizeof(AnimMode));
 			break;
 		default :
-			strcpy_s(AnimMode, 50, "Animation Mode : Default");
+			strncpy(AnimMode, "Animation Mode : Default", sizeof(AnimMode));
 			break;
 		}
 		AnimModelComponent->SetAnimationMode(newMode);
@@ -96,7 +96,7 @@ void Demo8a::Update(float ElapsedSeconds)
 		TimeScale -= 0.1f;
 	}
 
-	__super::Update(ElapsedSeconds * TimeScale);
+	Knight::Update(ElapsedSeconds * TimeScale);
 }
 
 void Demo8a::DrawGUI()
@@ -111,6 +111,6 @@ void Demo8a::DrawGUI()
 	DrawText(AnimMode, 10, 30, 30, GREEN);
 
 	char strBuf[50];
-	sprintf_s(strBuf, 50, "Time Scale: %.1f", TimeScale);
+	snprintf(strBuf, sizeof(strBuf), "Time Scale: %.1f", TimeScale);
 	DrawText(strBuf, 10, 60, 30, GREEN);
 }

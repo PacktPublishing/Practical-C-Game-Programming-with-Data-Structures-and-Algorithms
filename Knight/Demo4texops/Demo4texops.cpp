@@ -3,7 +3,7 @@
 // Include the necessary headers for the UI functions of raylib
 // Check https://github.com/raysan5/raygui for more details
 #define RAYGUI_IMPLEMENTATION
-#include "Demo4texops.h"
+#include "Demo4TexOps.h"
 
 //The main application function
 int main(int argc, char* argv[])
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 void Demo4TexOps::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	GuiSetStyle(DEFAULT, TEXT_SIZE, 30);
 
@@ -31,7 +31,7 @@ void Demo4TexOps::Start()
 //Update with current demo entity
 void Demo4TexOps::Update(float ElapsedSeconds)
 {
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 
 	if (IsKeyPressed(KEY_ENTER) == true || IsMouseButtonPressed(0)== true) {
 		(*it)->Release();
@@ -50,7 +50,7 @@ void Demo4TexOps::DrawGUI()
 	Rectangle r1 = { 200,830,1520,250};
 	Rectangle r2 = { 200, 1000, 1520, 50};
 
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	if (it == demos.end()) {
 		ExitGameLoop();
@@ -90,7 +90,7 @@ void Demo4TexOps::InitEntities()
 //Create default resources, such as fonts, shaders, etc.
 void Demo4TexOps::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 	GuiSetFont(_Font);
 }

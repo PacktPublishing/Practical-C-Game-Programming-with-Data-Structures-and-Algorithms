@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 //Initialize Knight Engine with a default scene and camera
 void Demo7QuadTreeTerrain::Start()
 {
-    __super::Start();
+    Knight::Start();
 
     pTerrain = _Scene->CreateSceneObject<SceneActor>("Terrain");
     pTerrain->Position = Vector3{ 0.0f, 0.0f, 0.0f };           // Define model position
@@ -45,7 +45,7 @@ void Demo7QuadTreeTerrain::DrawGUI()
 //Create default resources for the demo
 void Demo7QuadTreeTerrain::OnCreateDefaultResources()
 {
-    __super::OnCreateDefaultResources();
+    Knight::OnCreateDefaultResources();
     _Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }
 

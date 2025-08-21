@@ -14,16 +14,16 @@ int main(int argc, char* argv[])
 void Demo5FPC::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
 	//initialize a first person camera
-	PerspectiveCamera* FPSCamera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
-	FPSCamera->SetPosition(Vector3{0.0f, 2.0f, 4.0f});    // Camera position
-	FPSCamera->SetLookAtPosition(Vector3{ 0.0f, 2.0f, 0.0f });      // Camera looking at point
-	FPSCamera->SetFovY(60.0f);                                // Camera field-of-view Y	
-	FPSCamera->CameraMode = CAMERA_FIRST_PERSON;   
+	PerspectiveCamera* fpsCamera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
+	fpsCamera->SetPosition(Vector3{0.0f, 2.0f, 4.0f});    // Camera position
+	fpsCamera->SetLookAtPosition(Vector3{ 0.0f, 2.0f, 0.0f });      // Camera looking at point
+	fpsCamera->SetFovY(60.0f);                                // Camera field-of-view Y	
+	fpsCamera->cameraMode = CAMERA_FIRST_PERSON;   
 
 	//create floor and walls
 	SceneActor* pFloor = _Scene->CreateSceneObject<SceneActor>("Floor");
@@ -83,7 +83,7 @@ void Demo5FPC::Start()
 //Render help text on the screen
 void Demo5FPC::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	DrawText("Rotate camera angle: move mouse.", 10, 100, 40, WHITE);
 	DrawText("Move camera: Use W/S/A/D.", 10, 150, 40, WHITE);
 }
@@ -91,6 +91,6 @@ void Demo5FPC::DrawGUI()
 // This function is called when the engine is ready to create default resources like fonts, textures, etc.
 void Demo5FPC::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

@@ -21,7 +21,7 @@ Demo5Ortho::Demo5Ortho()
 void Demo5Ortho::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -32,7 +32,7 @@ void Demo5Ortho::Start()
 // Update the camera position based on user input
 void Demo5Ortho::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	DrawGrid(20, 1.0f);
 
@@ -53,7 +53,7 @@ void Demo5Ortho::DrawFrame()
 //Render help text on the screen
 void Demo5Ortho::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	DrawText("Rotate camera angle: move mouse.", 10, 100, 40, WHITE);
 	DrawText("Move camera: Use arrow keys.", 10, 150, 40, WHITE);
 }
@@ -61,7 +61,7 @@ void Demo5Ortho::DrawGUI()
 // Load default resources for the demo
 void Demo5Ortho::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 
 	UnloadFont(_Font);
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);

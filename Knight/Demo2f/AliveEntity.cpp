@@ -19,7 +19,7 @@ void AliveEntity::DoAttack()
 
 	int dmg = ((rand() % 2) + 1) * 10;
 
-	sprintf_s(buf, "%s %s attack!", Actor->GetName(), (dmg == 10) ? "minor" : "heavy");
+	sprintf(buf, "%s %s attack!", Actor->GetName(), (dmg == 10) ? "minor" : "heavy");
 	Demo2f::Log(buf);
 
 	_target->AddAction(ActionId::ApplyDamage, dmg);
@@ -39,7 +39,7 @@ void AliveEntity::DealDamage(int originalValue)
 		dmgVal = (originalValue * 13 / 10);
 	HP -= dmgVal;
 
-	sprintf_s(buf, "%s receive damage:%d HP:%d", Actor->GetName(), dmgVal, HP);
+	sprintf(buf, "%s receive damage:%d HP:%d", Actor->GetName(), dmgVal, HP);
 	Demo2f::Log(buf);
 
 	if (HP < 0)
@@ -69,7 +69,7 @@ void AliveEntity::Update(float elaspedTime)
 		}
 	}
 
-	__super::Update(elaspedTime);
+	Entity::Update(elaspedTime);
 }
 
 void AliveEntity::SetTarget(AliveEntity* target)

@@ -26,7 +26,7 @@ Demo4ss::Demo4ss()
 void Demo4ss::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -42,13 +42,13 @@ void Demo4ss::EndGame()
 	UnloadTexture(midground);   // Unload midground texture
 	UnloadTexture(foreground);  // Unload foreground texture
 
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 // Update the scrolling positions of the layers
 void Demo4ss::Update(float ElapsedSeconds)
 {
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 
 	scrollingBack -= 0.2f;
 	scrollingMid -= 0.8f;
@@ -62,7 +62,7 @@ void Demo4ss::Update(float ElapsedSeconds)
 
 void Demo4ss::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	Vector2 v2;
 
@@ -89,6 +89,6 @@ void Demo4ss::DrawGUI()
 //Create resources such as fonts, shaders, etc.
 void Demo4ss::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

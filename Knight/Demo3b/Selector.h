@@ -71,7 +71,7 @@ public:
 		
 		T *optionsBuffer = new T[ArraySize];
 		int size = sizeof(T) * ArraySize;
-		memcpy_s(optionsBuffer, size, Options, size);
+		memcpy(optionsBuffer, Options, size);
 
 		for (int i = 0; i < SelectedCount; ++i)
 		{

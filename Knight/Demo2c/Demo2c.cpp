@@ -18,14 +18,14 @@ int main(int argc, char* argv[])
 void Demo2c::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
 	//Prepare a camera
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3 { 60, 30, 60 });
-	camera->CameraMode = CameraMode::CAMERA_THIRD_PERSON;
+	camera->cameraMode = CameraMode::CAMERA_THIRD_PERSON;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0, 10, 0 });
 
@@ -42,7 +42,7 @@ void Demo2c::Update(float ElapsedSeconds)
 		enemy.Update(ElapsedSeconds);
 	}		
 	terrain->Update(ElapsedSeconds);
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Initialize entities in the scene
@@ -85,6 +85,6 @@ void Demo2c::DrawGUI()
 //Load default resources for the demo
 void Demo2c::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo53PV::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -57,13 +57,13 @@ void Demo53PV::Update(float ElapsedSeconds)
 		Actor->Rotation.y -= 1;  // Rotate right
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 // Draw the frame, including grid and player movement visualization
 void Demo53PV::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	// Draw grid for better spatial reference
 	DrawGrid(10, 1.0f);
@@ -81,7 +81,7 @@ void Demo53PV::DrawFrame()
 // Draw GUI elements to provide instructions to the user
 void Demo53PV::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	DrawText("Use W/A/S/D to move player", 10, 50, 40, WHITE);
 	DrawText("Hold right mouse button and move mouse to rotate camera", 10, 100, 40, WHITE);
@@ -91,6 +91,6 @@ void Demo53PV::DrawGUI()
 // Load default resources such as fonts
 void Demo53PV::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

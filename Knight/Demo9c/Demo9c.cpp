@@ -21,13 +21,13 @@ int main(int argc, char* argv[])
 
 void Demo9c::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	SetTargetFPS(30);
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{0.0f, 60.0f, 60.0f});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0.0f, 0.0f, 10.0f });
 
@@ -77,12 +77,12 @@ void Demo9c::Update(float DeltaTime)
 		}
 	}
 
-	__super::Update(DeltaTime);
+	Knight::Update(DeltaTime);
 }
 
 void Demo9c::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	Vector2 start, end;
 

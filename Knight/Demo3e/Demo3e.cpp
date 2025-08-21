@@ -17,13 +17,13 @@ int main(int argc, char* argv[])
 
 void Demo3e::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
 	_camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	_camera->SetPosition(Vector3{0, 120, 30});
-	_camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	_camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	_camera->ShowCursor = false;
 	_camera->SetLookAtPosition(Vector3{ 0, 0, 0 });
 
@@ -38,7 +38,7 @@ void Demo3e::EndGame()
 		delete 	_mazeGenerator;
 		_mazeGenerator = nullptr;
 	}
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 void Demo3e::Update(float ElapsedSeconds)
@@ -47,7 +47,7 @@ void Demo3e::Update(float ElapsedSeconds)
 	{
 		_mazeGenerator->GenerateMaze();
 	}
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 void Demo3e::DrawFrame()

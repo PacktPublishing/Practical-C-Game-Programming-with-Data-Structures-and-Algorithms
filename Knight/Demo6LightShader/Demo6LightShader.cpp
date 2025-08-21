@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 void Demo6LightShader::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -69,13 +69,13 @@ void Demo6LightShader::Update(float ElapsedSeconds)
 	pLight->Position.x = 4.0f * cosf((float)GetTime());
 	pLight->Position.z = 4.0f * sinf((float)GetTime());
 	pLight->lightDirection = Vector3Normalize(Vector3Subtract(Vector3{ 0,0,0 }, pLight->Position));
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 // Draw the frame, including the player and light
 void Demo6LightShader::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	DrawSphereWires(pLight->Position, 0.2f, 8, 8, WHITE);
 
@@ -86,6 +86,6 @@ void Demo6LightShader::DrawFrame()
 // Load default resources like fonts, textures, etc.
 void Demo6LightShader::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }
