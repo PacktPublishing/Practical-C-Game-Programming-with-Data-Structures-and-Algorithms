@@ -9,7 +9,7 @@
 SceneCamera::SceneCamera(Scene* Scene, const char* Name, bool IsMainCamera) : 
 	SceneObject(Scene, Name)
 	, _Camera({ 0 })
-	, CameraMode(CAMERA_CUSTOM)
+	, cameraMode(CAMERA_CUSTOM)
 	, ShowCursor(true)
 {
 	_Camera.position = Vector3{ 0,1,-10.0f };
@@ -31,8 +31,8 @@ bool SceneCamera::Update(float ElapsedSeconds)
 		return false;
 	}
 
-	if (CameraMode != CAMERA_CUSTOM)
-		UpdateCamera(&_Camera, CameraMode);
+	if (cameraMode != CAMERA_CUSTOM)
+		UpdateCamera(&_Camera, cameraMode);
 
 	SceneObject::Update(ElapsedSeconds); // Call base class update
 

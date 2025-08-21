@@ -29,7 +29,7 @@ void Demo1::Start()
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{60, 30, 60});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3 { 0, 10, 0 });
 
