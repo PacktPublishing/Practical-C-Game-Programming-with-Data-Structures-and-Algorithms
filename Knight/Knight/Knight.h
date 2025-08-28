@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdio.h>
+#include <string.h>
+
 #include "Defs.h" 
 #include "Scene.h"
 #include "SceneObject.h"

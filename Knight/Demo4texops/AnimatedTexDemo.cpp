@@ -1,4 +1,4 @@
-#include "Demo4texops.h"
+#include "Demo4TexOps.h"
 
 AnimatedTexDemo::AnimatedTexDemo()
 {

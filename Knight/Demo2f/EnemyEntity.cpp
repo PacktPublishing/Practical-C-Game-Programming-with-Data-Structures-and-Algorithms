@@ -34,7 +34,7 @@ void EnemyEntity::Update(float elaspedTime)
 	}
 
 	//process usual entity updates
-	__super::Update(elaspedTime);
+	Entity::Update(elaspedTime);
 }
 
 void EnemyEntity::DrawGUI()
@@ -66,7 +66,7 @@ void EnemyEntity::DrawGUI()
 
 void EnemyEntity::Die()
 {
-	__super::Die();
+	AliveEntity::Die();
 
 	Demo2f::Log("Enemy dies!");
 	Demo2f::GameOver(YouWin);

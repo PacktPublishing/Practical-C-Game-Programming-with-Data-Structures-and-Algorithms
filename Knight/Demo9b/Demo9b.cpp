@@ -26,13 +26,13 @@ int main(int argc, char* argv[])
 
 void Demo9b::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	SetTargetFPS(30);
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{0.0f, 30.0f, -30.0f});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0.0f, 0.0f, 0.0f });
 
@@ -76,7 +76,7 @@ void Demo9b::Update(float DeltaTime)
 	PlayerCharacterFSM->Update(DeltaTime);
 	EnemyBT->Update(DeltaTime);
 
-	__super::Update(DeltaTime);
+	Knight::Update(DeltaTime);
 }
 
 void Demo9b::DrawGUI()

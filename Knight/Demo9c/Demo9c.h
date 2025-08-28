@@ -9,7 +9,7 @@ public:
 
 protected:
 	void Update(float DeltaTime) override;
-	void DrawGUI();
+	void DrawGUI() override;
 	void DrawFrame() override;
 
 	AStarPathFinder _pathFinder;

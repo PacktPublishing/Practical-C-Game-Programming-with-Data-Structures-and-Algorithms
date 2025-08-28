@@ -6,6 +6,7 @@ Knight/Knight/x64
 Knight/build/raylib/obj/x64
 Knight/build/raylib/bin/x64
 Knight/.vs
+build/
 
 #Ignore files
 *.log

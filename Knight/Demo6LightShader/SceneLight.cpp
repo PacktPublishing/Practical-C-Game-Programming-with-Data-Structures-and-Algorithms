@@ -34,7 +34,7 @@ void SceneLight::Create()
 
 bool SceneLight::Update(float ElapsedTime)
 {
-	__super::Update(ElapsedTime);
+	SceneActor::Update(ElapsedTime);
 
 	SetShaderValue(shader, locLightPosition, &Position, SHADER_UNIFORM_VEC3);	
 	SetShaderValue(shader, locLightDirection, &lightDirection, SHADER_UNIFORM_VEC3);

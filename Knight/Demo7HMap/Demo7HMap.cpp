@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 void Demo7HMap::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -24,7 +24,7 @@ void Demo7HMap::Start()
 	pMainCamera->SetFovY(45.0f);
 	pMainCamera->SetPosition(Vector3{ 36, 21, 36 });
 	pMainCamera->SetLookAtPosition(Vector3{ 0, 0, 0 });
-	pMainCamera->CameraMode = CAMERA_ORBITAL;
+	pMainCamera->cameraMode = CAMERA_ORBITAL;
 	pMainCamera->ShowCursor = true;
 
 	pTerrain = _Scene->CreateSceneObject<SceneActor>("Terrain");
@@ -42,18 +42,18 @@ void Demo7HMap::EndGame()
 {
 	UnloadTexture(texture);     // Unload texture
 
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 void Demo7HMap::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	DrawGrid(20, 1.0f);
 }
 
 void Demo7HMap::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	
 	DrawText("Use the mouse wheel to zoom camera.", 10, 50, 40, WHITE);
 }
@@ -61,6 +61,6 @@ void Demo7HMap::DrawGUI()
 
 void Demo7HMap::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

@@ -15,11 +15,11 @@ int main(int argc, char* argv[])
 
 void Demo3f::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{0.0f, 50.0f, -120.0f});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0.0f, 0.0f, 0.0f });
 
@@ -49,13 +49,13 @@ void Demo3f::Update(float ElapsedSeconds)
 		bullet->SetPosition(startPos, Vector3{ 0.0f, 0.0f, 50.0f });
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 	_bulletPool.Update(ElapsedSeconds);
 }
 
 void Demo3f::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	_bulletPool.Draw();
 }
 

@@ -30,7 +30,7 @@ GameResult Demo2f::_gameOver = InProgress;
 void Demo2f::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -43,7 +43,7 @@ void Demo2f::Start()
 
 	//Prepare a camera
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetPosition(Vector3{ 60, 30, 60 });
 	camera->SetLookAtPosition(Vector3{0, 3, 0});
@@ -59,7 +59,7 @@ void Demo2f::Update(float ElapsedSeconds)
 	player->Update(ElapsedSeconds);
 	enemy->Update(ElapsedSeconds);
 	terrain->Update(ElapsedSeconds);
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Render gameplay status
@@ -132,6 +132,6 @@ void Demo2f::Log(const std::string& message) {
 //Load the default resources for the demo
 void Demo2f::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

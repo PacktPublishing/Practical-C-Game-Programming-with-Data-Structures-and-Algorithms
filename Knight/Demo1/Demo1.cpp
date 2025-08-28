@@ -23,13 +23,13 @@ int main(int argc, char* argv[])
 
 void Demo1::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{60, 30, 60});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3 { 0, 10, 0 });
 
@@ -87,7 +87,7 @@ void Demo1::Start()
 
 void Demo1::EndGame()
 {
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 void Demo1::Update(float ElapsedSeconds)
@@ -107,10 +107,10 @@ void Demo1::Update(float ElapsedSeconds)
 
 	modelActor->Rotation.y -= ElapsedSeconds * spinSpeed;
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 void Demo1::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 }

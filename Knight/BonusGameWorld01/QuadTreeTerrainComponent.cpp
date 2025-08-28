@@ -67,7 +67,7 @@ bool QuadTreeTerrainComponent::CreateFromFile(Vector3 dimension, Vector2 texTile
 
 void QuadTreeTerrainComponent::Update(float ElapsedSeconds)
 {
-	__super::Update(ElapsedSeconds); // Call base class update  
+	Component::Update(ElapsedSeconds); // Call base class update  
 
     if (IsKeyPressed(KEY_B)) {
         DebugShowBounds = !DebugShowBounds; // Toggle bounding box visibility
@@ -76,7 +76,7 @@ void QuadTreeTerrainComponent::Update(float ElapsedSeconds)
 
 void QuadTreeTerrainComponent::Draw(RenderHints *pRH)
 {
-	__super::Draw(pRH); // Call base class draw
+	Component::Draw(pRH); // Call base class draw
 
     FrustumPlane frustumPlanes[6]; // Array to hold the frustum planes
     NumTriangles = 0;

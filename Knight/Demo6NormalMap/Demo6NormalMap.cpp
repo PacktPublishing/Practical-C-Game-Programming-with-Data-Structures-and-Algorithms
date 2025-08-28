@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 void Demo6NormalMap::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -83,7 +83,7 @@ void Demo6NormalMap::EndGame()
 	UnloadTexture(diffuse);
 	UnloadTexture(normalMap);
 	UnloadShader(shader);
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 // Update light position and character rotation based on input
@@ -113,13 +113,13 @@ void Demo6NormalMap::Update(float ElapsedSeconds)
 	characterActor->Rotation = rot;
 	cubeActor->Rotation = rot;
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Render scene and light source as a small sphere
 void Demo6NormalMap::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	// Draw light as a small sphere
 	DrawSphere(lightPos, 0.1f, YELLOW);
@@ -128,16 +128,16 @@ void Demo6NormalMap::DrawFrame()
 //Render help text and debug information 
 void Demo6NormalMap::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	char buf[80];
 
 	Vector3 v = pMainCamera->GetPosition();
-	sprintf_s(buf, sizeof(buf), "cam: %f, %f, %f", v.x, v.y, v.z);
+	snprintf(buf, sizeof(buf), "cam: %f, %f, %f", v.x, v.y, v.z);
 	DrawTextEx(_Font, buf, Vector2{ 100, 100 }, 40,4, WHITE);
 
 	v = lightPos;
-	sprintf_s(buf, sizeof(buf), "light: %f, %f, %f", v.x, v.y, v.z);
+	snprintf(buf, sizeof(buf), "light: %f, %f, %f", v.x, v.y, v.z);
 	DrawTextEx(_Font, buf, Vector2{ 100, 170 }, 40,4, WHITE);
 
 	DrawTextEx(_Font, "Use WSAD to move light source.", Vector2{100, 50}, 40, 4, WHITE);
@@ -146,6 +146,6 @@ void Demo6NormalMap::DrawGUI()
 //Create default resources for the demo
 void Demo6NormalMap::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

@@ -45,7 +45,7 @@ bool SkyboxComponent::CreateFromFile(const char* pSkyboxTexFilePath, CubemapLayo
 
 void SkyboxComponent::Update(float ElapsedSeconds)
 {
-	__super::Update(ElapsedSeconds);
+	Component::Update(ElapsedSeconds);
 }
 
 void SkyboxComponent::Draw(RenderHints *pRH)

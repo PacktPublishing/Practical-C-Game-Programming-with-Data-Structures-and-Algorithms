@@ -1,3 +1,6 @@
+#include <algorithm>
+
+#include <string.h>
 
 #include "Scene.h"
 #include "SceneObject.h"
@@ -37,7 +40,7 @@ SceneObject* Scene::FindObjectByName(SceneObject* RootObject, const char* Name, 
 	if (RootObject == nullptr)
 		RootObject = SceneRoot;
 
-	int cmp = CaseSensitive ? strcmp(RootObject->GetName(), Name) : _strcmpi(RootObject->GetName(), Name);
+	int cmp = CaseSensitive ? strcmp(RootObject->GetName(), Name) : strcasecmp(RootObject->GetName(), Name);
 	if (cmp == 0)
 	{
 		return RootObject;

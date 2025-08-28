@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
 void Demo7Billboard::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -90,18 +90,18 @@ void Demo7Billboard::Update(float ElapsedSeconds)
 
 	mainCamera->SetLookAtPosition(player->Position);
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 void Demo7Billboard::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	DrawText("Drag mouse with right click to rotate camera.", 10, 50, 40, WHITE);
 }
 
 //Create default resources like fonts, textures, etc.
 void Demo7Billboard::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

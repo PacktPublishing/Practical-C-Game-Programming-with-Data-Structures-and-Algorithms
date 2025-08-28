@@ -20,7 +20,7 @@ SphereComponent::~SphereComponent()
 
 void SphereComponent::Update(float ElapsedSeconds)
 {
-	__super::Update(ElapsedSeconds);
+	Component::Update(ElapsedSeconds);
 	if (Radius != _Radius || Rings != _Rings || Slices != _Slices)
 	{
 		_Radius = Radius;

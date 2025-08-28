@@ -20,7 +20,7 @@ public:
 	SceneCamera(Scene* Scene, const char* Name = nullptr, bool IsMainCamera = true);
 	virtual ~SceneCamera();
 
-	CameraMode CameraMode;
+	CameraMode cameraMode;
 	bool ShowCursor;
 
 	inline void SetPosition(Vector3 pos) { _Camera.position = pos; }

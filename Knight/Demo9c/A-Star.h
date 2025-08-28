@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 #include "Knight.h"
 #include "Maze.h"
 #include <vector>
@@ -44,7 +46,7 @@ private:
 			path.push_back(node->Position);
 			node = node->Parent;
 		}
-		reverse(path.begin(), path.end());
+		std::reverse(path.begin(), path.end());
 		return path;
 	}
 

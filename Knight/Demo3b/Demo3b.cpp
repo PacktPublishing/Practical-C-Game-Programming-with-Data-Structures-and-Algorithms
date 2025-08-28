@@ -25,13 +25,13 @@ int main(int argc, char* argv[])
 
 void Demo3b::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{80, 60, 0});
-	camera->CameraMode = CameraMode::CAMERA_CUSTOM;
+	camera->cameraMode = CameraMode::CAMERA_CUSTOM;
 	camera->ShowCursor = false;
 	camera->SetLookAtPosition(Vector3{ 0, 10, 0 });
 
@@ -107,5 +107,5 @@ void Demo3b::Update(float ElapsedSeconds)
 		PlaceCharacters();
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }

@@ -1,3 +1,7 @@
+#include <algorithm>
+
+#include <string.h>
+
 #include "SceneObject.h"
 #include "Scene.h"
 
@@ -45,7 +49,7 @@ void SceneObject::SetName(const char* Name)
 {
 	if (Name != nullptr)
 	{
-		strncpy_s(_Name, MAX_SCENE_OBJECT_NAME, Name, _TRUNCATE);
+		strncpy(_Name, Name, MAX_SCENE_OBJECT_NAME);
 	}
 }
 
@@ -64,7 +68,7 @@ void SceneObject::SetParent(SceneObject* parent)
 	//Remove from current parent
 	if (Parent != nullptr) 
 	{
-		Parent->_Children.erase(remove(Parent->_Children.begin(), Parent->_Children.end(), this), Parent->_Children.end());
+		Parent->_Children.erase(std::remove(Parent->_Children.begin(), Parent->_Children.end(), this), Parent->_Children.end());
 	}
 
 	//add into parent's children

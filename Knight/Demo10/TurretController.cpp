@@ -156,7 +156,7 @@ void TurretController::Train(int Method, int SampleCount, int epochs)
 	}
 
 	FILE* fp = NULL;
-	errno_t err = fopen_s(&fp, "C:\\Logs\\TrainingLogs.txt", "w+");
+	fp = fopen("C:\\Logs\\TrainingLogs.txt", "w+");
 	for (int epoch = 0; epoch < epochs; ++epoch)
 	{
 		//Train the model

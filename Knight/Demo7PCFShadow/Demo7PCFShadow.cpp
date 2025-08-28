@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 void Demo7PCFShadow::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 	Config.ShowFPS = true;
 	
 	pMainCamera = _Scene->CreateSceneObject<FlyThroughCamera>("Main Camera");
@@ -124,7 +124,7 @@ void Demo7PCFShadow::Update(float ElapsedSeconds)
 	sceneLight->lightDir = Vector3Normalize(sceneLight->lightDir);
 	pDepthRenderer->lightCam.position = Vector3Scale(sceneLight->lightDir, -15.0f);
 	SetShaderValue(pShadowMapRenderer->shadowShader, pShadowMapRenderer->lightDirLoc, &sceneLight->lightDir, SHADER_UNIFORM_VEC3);
-	__super::Update(ElapsedSeconds);  //allow update main camera
+	Knight::Update(ElapsedSeconds);  //allow update main camera
 }
 
 void Demo7PCFShadow::DrawOffscreen()

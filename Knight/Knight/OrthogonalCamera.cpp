@@ -5,7 +5,7 @@ OrthogonalCamera::OrthogonalCamera(Scene* Scene, const char* Name, bool IsMainCa
 	: SceneCamera(Scene, Name, IsMainCamera)
 {
 	_Camera.projection = CAMERA_ORTHOGRAPHIC;
-	CameraMode = CAMERA_CUSTOM; // Set to custom mode to allow manual control
+	cameraMode = CAMERA_CUSTOM; // Set to custom mode to allow manual control
 }
 
 void OrthogonalCamera::SetUp(Vector3 pos, Vector3 target, float zoom)
@@ -22,7 +22,7 @@ bool OrthogonalCamera::Update(float ElapsedSeconds)
     if (!IsActive)
         return false;
 
-	__super::Update(ElapsedSeconds); // Call base class update
+	SceneCamera::Update(ElapsedSeconds); // Call base class update
 
     if (!_ProcessInput)
 		return true; // If input processing is disabled, skip further updates
