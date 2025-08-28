@@ -30,7 +30,7 @@ bool FollowUpCamera::Update(float ElapsedSeconds)
         mCameraVerticalOffset += GetMouseDelta().y * 0.01f;
     }
 
-	SceneCamera::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 
     return true;
 }

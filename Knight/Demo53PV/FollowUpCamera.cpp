@@ -14,7 +14,7 @@ bool FollowUpCamera::Update(float ElapsedSeconds)
     if (!IsActive)
         return false;
 
-    SceneCamera::Update(ElapsedSeconds);
+    __super::Update(ElapsedSeconds);
 
     // Adjust camera distance with mouse wheel
     if (processMouseInput)

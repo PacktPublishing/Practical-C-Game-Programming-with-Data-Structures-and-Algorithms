@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo53PV::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -30,7 +30,7 @@ void Demo53PV::Start()
 	Actor->Position = Vector3{ 0.f,0.5f,0.f };
 	Actor->Rotation = Vector3{ 0,180.0f,0 };
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
 	Actor->AddComponent(animPlayerComponent);
 
@@ -57,13 +57,13 @@ void Demo53PV::Update(float ElapsedSeconds)
 		Actor->Rotation.y -= 1;  // Rotate right
 	}
 
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }
 
 // Draw the frame, including grid and player movement visualization
 void Demo53PV::DrawFrame()
 {
-	Knight::DrawFrame();
+	__super::DrawFrame();
 
 	// Draw grid for better spatial reference
 	DrawGrid(10, 1.0f);
@@ -81,7 +81,7 @@ void Demo53PV::DrawFrame()
 // Draw GUI elements to provide instructions to the user
 void Demo53PV::DrawGUI()
 {
-	Knight::DrawGUI();
+	__super::DrawGUI();
 
 	DrawText("Use W/A/S/D to move player", 10, 50, 40, WHITE);
 	DrawText("Hold right mouse button and move mouse to rotate camera", 10, 100, 40, WHITE);
@@ -91,6 +91,6 @@ void Demo53PV::DrawGUI()
 // Load default resources such as fonts
 void Demo53PV::OnCreateDefaultResources()
 {
-	Knight::OnCreateDefaultResources();
-	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+	__super::OnCreateDefaultResources();
+	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

@@ -11,7 +11,7 @@ NPatchDemo::NPatchDemo()
 
 void NPatchDemo::Create()
 {
-	Image art = LoadImage((std::string(RESOURCES_DIR) + "/textures/uibkgd.png").c_str());
+	Image art = LoadImage("../../resources/textures/uibkgd.png");
 	_npatchTex = LoadTextureFromImage(art);
 	UnloadImage(art);
 

@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
 
 void Demo3a::Start()
 {
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -39,7 +39,7 @@ void Demo3a::Start()
 
 	Castle = _Scene->CreateSceneObject<SceneActor>("Castle");
 	ModelComponent* modelComponent = Castle->CreateAndAddComponent<ModelComponent>();
-	modelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/castle.obj").c_str(), (std::string(RESOURCES_DIR) + "/models/obj/castle_diffuse.png").c_str());
+	modelComponent->Load3DModel("../../resources/models/obj/castle.obj", "../../resources/models/obj/castle_diffuse.png");
 
 	SpawnPointA = _Scene->CreateSceneObject<SceneActor>("SpawnPoint A");
 	SpawnPointA->Position = SpawnPoints[0];
@@ -73,7 +73,7 @@ void Demo3a::Start()
 	Character->Position = Selector::WeightedRandomSelect<Vector3>(SpawnPoints, SpawnProbabilities, 3);
 	Character->Rotation.y = 90.0f;
 	ModelComponent* animModelComponent = Character->CreateAndAddComponent<ModelComponent>();
-	animModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animModelComponent->SetAnimation(10);
 	Character->AddComponent(animModelComponent);
 }
@@ -85,5 +85,5 @@ void Demo3a::Update(float ElapsedSeconds)
 		Character->Position = Selector::WeightedRandomSelect<Vector3>(SpawnPoints, SpawnProbabilities, 3);
 	}
 
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }

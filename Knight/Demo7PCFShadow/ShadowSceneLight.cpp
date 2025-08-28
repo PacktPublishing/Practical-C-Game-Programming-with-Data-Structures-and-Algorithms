@@ -15,7 +15,7 @@ void ShadowSceneLight::SetLight(Vector3 dir, Color col)
 
 bool ShadowSceneLight::Update(float ElapsedTime)
 {
-	SceneActor::Update(ElapsedTime);
+	__super::Update(ElapsedTime);
 
 	return true;
 }

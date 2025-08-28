@@ -11,7 +11,7 @@ AnimatedTexDemo::AnimatedTexDemo()
 
 void AnimatedTexDemo::Create()
 {
-	Image art = LoadImage((std::string(RESOURCES_DIR) + "/textures/lightening.png").c_str());
+	Image art = LoadImage("../../resources/textures/lightening.png");
 	_spritesSheet = LoadTextureFromImage(art);
 	UnloadImage(art);
 	isReady = true;

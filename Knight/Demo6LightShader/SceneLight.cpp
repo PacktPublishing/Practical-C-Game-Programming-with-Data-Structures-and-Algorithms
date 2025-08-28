@@ -15,7 +15,7 @@ SceneLight::~SceneLight()
 
 void SceneLight::Create()
 {
-	shader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/light_point.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/light_point.fs").c_str());
+	shader = LoadShader("../../resources/shaders/glsl330/light_point.vs", "../../resources/shaders/glsl330/light_point.fs");
 
 	_Scene->_CurrentRenderPass->Hints.pOverrideShader = &shader;
 
@@ -34,7 +34,7 @@ void SceneLight::Create()
 
 bool SceneLight::Update(float ElapsedTime)
 {
-	SceneActor::Update(ElapsedTime);
+	__super::Update(ElapsedTime);
 
 	SetShaderValue(shader, locLightPosition, &Position, SHADER_UNIFORM_VEC3);	
 	SetShaderValue(shader, locLightDirection, &lightDirection, SHADER_UNIFORM_VEC3);

@@ -12,7 +12,7 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Scale = Vector3{ 3.0f, 5.0f, 3.0f };
 	Actor->Position = Vector3{ 0, 0.0f, 0.0f };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/greenman.glb").c_str());
+	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
 	animEnemyComponent->SetAnimation(0);
 	Actor->AddComponent(animEnemyComponent);
 }
@@ -34,7 +34,7 @@ void EnemyEntity::Update(float elaspedTime)
 	}
 
 	//process usual entity updates
-	AliveEntity::Update(elaspedTime);
+	__super::Update(elaspedTime);
 }
 
 void EnemyEntity::DrawGUI()
@@ -66,7 +66,7 @@ void EnemyEntity::DrawGUI()
 
 void EnemyEntity::Die()
 {
-	AliveEntity::Die();
+	__super::Die();
 
 	Demo2f::Log("Enemy dies!");
 	Demo2f::GameOver(YouWin);

@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 
 void Demo3e::Start()
 {
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -38,7 +38,7 @@ void Demo3e::EndGame()
 		delete 	_mazeGenerator;
 		_mazeGenerator = nullptr;
 	}
-	Knight::EndGame();
+	__super::EndGame();
 }
 
 void Demo3e::Update(float ElapsedSeconds)
@@ -47,7 +47,7 @@ void Demo3e::Update(float ElapsedSeconds)
 	{
 		_mazeGenerator->GenerateMaze();
 	}
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }
 
 void Demo3e::DrawFrame()

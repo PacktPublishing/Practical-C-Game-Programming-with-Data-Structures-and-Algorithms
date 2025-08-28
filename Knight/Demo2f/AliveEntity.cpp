@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include "Demo2f.h"
 
@@ -69,7 +69,7 @@ void AliveEntity::Update(float elaspedTime)
 		}
 	}
 
-	Entity::Update(elaspedTime);
+	__super::Update(elaspedTime);
 }
 
 void AliveEntity::SetTarget(AliveEntity* target)

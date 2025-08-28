@@ -65,7 +65,7 @@ public:
     */
     void Activate() override
     {
-        PoolableObject::Activate();
+        __super::Activate();
         _lifespan = BULLET_LIFETIME;
     }
 };

@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo2a::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -43,7 +43,7 @@ void Demo2a::Update(float ElapsedSeconds)
 	terrain->Update(ElapsedSeconds);
 
 	//Update rendering settings of all SceneActors and camera position 
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }
 
 // This function is called to draw the frame, including the entities and the camera.
@@ -51,7 +51,7 @@ void Demo2a::Update(float ElapsedSeconds)
 // In your real application, you don't need to override this function unless you have special rendering requirements.
 void Demo2a::DrawFrame()
 {
-	Knight::DrawFrame();
+	__super::DrawFrame();
 }
 
 // This function is called to initialize the entities in the scene.
@@ -86,7 +86,7 @@ void Demo2a::DrawGUI()
 // It is used to load default resources such as fonts.
 void Demo2a::OnCreateDefaultResources()
 {
-	Knight::OnCreateDefaultResources();
+	__super::OnCreateDefaultResources();
 	//Loads a better TrueType font to display text information on the screen
-	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

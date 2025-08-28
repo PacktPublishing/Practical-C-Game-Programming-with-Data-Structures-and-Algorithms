@@ -1,4 +1,4 @@
-
+#pragma once
 
 #include "Demo2a.h"
 
@@ -18,7 +18,7 @@ void PlayerEntity::Create(Scene * pScene, Entity* pParent)
 	Actor->Position = Vector3{ 0, -3, 30.0f };
 	Actor->Rotation.y = 180.0f;
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
 	Actor->AddComponent(animPlayerComponent);
 }
@@ -31,7 +31,7 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Scale = Vector3{ 3.0f, 5.0f, 3.0f };
 	Actor->Position = Vector3{ 6.0f, -2.0f, 0.0f };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/greenman.glb").c_str());
+	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
 	animEnemyComponent->SetAnimation(0);
 	Actor->AddComponent(animEnemyComponent);
 }
@@ -46,7 +46,7 @@ void PropEntity::Create(Scene* pScene, Entity *pParent)
 	Actor->Position = Vector3{ -2.0f, 0.0f, 1.0f };
 	Actor->Scale = Vector3{ 0.2f, 5.0f, 0.2f };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/well.obj").c_str(), (std::string(RESOURCES_DIR) + "/models/obj/well_diffuse.png").c_str());
+	animEnemyComponent->Load3DModel("../../resources/models/obj/well.obj", "../../resources/models/obj/well_diffuse.png");
 	Actor->AddComponent(animEnemyComponent);
 }
 
@@ -59,6 +59,6 @@ void TerrainEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Position = Vector3{ 0, -5, 0 };
 	Actor->Scale = Vector3{ 20, 1, 20 };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/bridge.obj").c_str(), (std::string(RESOURCES_DIR) + "/models/obj/bridge_diffuse.png").c_str());
+	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj", "../../resources/models/obj/bridge_diffuse.png");
 	Actor->AddComponent(animEnemyComponent);
 }

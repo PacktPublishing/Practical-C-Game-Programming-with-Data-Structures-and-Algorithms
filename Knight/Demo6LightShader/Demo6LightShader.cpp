@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 void Demo6LightShader::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -40,7 +40,7 @@ void Demo6LightShader::Start()
 	pPlayer->Position = Vector3{ 0.f,0.5f,0.f };
 	pPlayer->Rotation = Vector3{ 0,0,0 };
 	ModelComponent* animPlayerComponent = pPlayer->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
 	pPlayer->AddComponent(animPlayerComponent);	
 }
@@ -69,13 +69,13 @@ void Demo6LightShader::Update(float ElapsedSeconds)
 	pLight->Position.x = 4.0f * cosf((float)GetTime());
 	pLight->Position.z = 4.0f * sinf((float)GetTime());
 	pLight->lightDirection = Vector3Normalize(Vector3Subtract(Vector3{ 0,0,0 }, pLight->Position));
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }
 
 // Draw the frame, including the player and light
 void Demo6LightShader::DrawFrame()
 {
-	Knight::DrawFrame();
+	__super::DrawFrame();
 
 	DrawSphereWires(pLight->Position, 0.2f, 8, 8, WHITE);
 
@@ -86,6 +86,6 @@ void Demo6LightShader::DrawFrame()
 // Load default resources like fonts, textures, etc.
 void Demo6LightShader::OnCreateDefaultResources()
 {
-	Knight::OnCreateDefaultResources();
-	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+	__super::OnCreateDefaultResources();
+	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

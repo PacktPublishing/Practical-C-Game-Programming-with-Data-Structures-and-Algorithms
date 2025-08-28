@@ -4,8 +4,8 @@
 #include <string>   // For filename manipulation
 #include <raymath.h>
 
-const std::string HEIGHTMAP_FILENAME = (std::string(RESOURCES_DIR) + "/textures/heightmap.png").c_str(); // heightmap
-const std::string TERRAIN_TEXTURE_FILENAME = (std::string(RESOURCES_DIR) + "/textures/terrain_map.png").c_str(); // terrain texture
+const char* HEIGHTMAP_FILENAME = "../../resources/textures/heightmap.png"; // heightmap
+const char* TERRAIN_TEXTURE_FILENAME = "../../resources/textures/terrain_map.png"; // terrain texture
 
 //Main entry point for the demo
 int main(int argc, char* argv[])
@@ -20,13 +20,13 @@ int main(int argc, char* argv[])
 //Initialize Knight Engine with a default scene and camera
 void Demo7QuadTreeTerrain::Start()
 {
-    Knight::Start();
+    __super::Start();
 
     pTerrain = _Scene->CreateSceneObject<SceneActor>("Terrain");
     pTerrain->Position = Vector3{ 0.0f, 0.0f, 0.0f };           // Define model position
     pTerrain->Scale = Vector3{ 1,1,1 };
     pQuadTreeTerrain = pTerrain->CreateAndAddComponent<QuadTreeTerrainComponent>();
-    pQuadTreeTerrain->CreateFromFile(Vector3{ 32, 8, 32 }, Vector2{ 8.0f, 8.0f }, HEIGHTMAP_FILENAME.c_str(), TERRAIN_TEXTURE_FILENAME.c_str());
+    pQuadTreeTerrain->CreateFromFile(Vector3{ 32, 8, 32 }, Vector2{ 8.0f, 8.0f }, HEIGHTMAP_FILENAME, TERRAIN_TEXTURE_FILENAME);
 
     pMainCamera = _Scene->CreateSceneObject<FlyThroughCamera>("Main Camera");
     pMainCamera->SetUp(pTerrain->Position, 30, 20, 20, 45, CAMERA_PERSPECTIVE);
@@ -45,8 +45,8 @@ void Demo7QuadTreeTerrain::DrawGUI()
 //Create default resources for the demo
 void Demo7QuadTreeTerrain::OnCreateDefaultResources()
 {
-    Knight::OnCreateDefaultResources();
-    _Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+    __super::OnCreateDefaultResources();
+    _Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }
 
 void Demo7QuadTreeTerrain::OnConfigKnightApp()

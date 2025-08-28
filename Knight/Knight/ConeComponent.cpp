@@ -20,7 +20,7 @@ ConeComponent::~ConeComponent()
 
 void ConeComponent::Update(float ElapsedSeconds)
 {
-	Component::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 	if (Radius != _Radius || Height != _Height || Slices != _Slices)
 	{
 		_Radius = Radius;

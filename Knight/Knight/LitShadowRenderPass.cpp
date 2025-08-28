@@ -11,9 +11,9 @@ LitShadowRenderPass::LitShadowRenderPass(LitDepthRenderPass *pPass)
 
 bool LitShadowRenderPass::Create(Scene* sc)
 {
-	SceneRenderPass::Create(sc);
+	__super::Create(sc);
 
-	shadowShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/kn-sm.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/kn-sm-pcf.fs").c_str());
+	shadowShader = LoadShader("../../resources/shaders/glsl330/kn-sm.vs", "../../resources/shaders/glsl330/kn-sm-pcf.fs");
 	InitLightUniforms(shadowShader);
 
 	for (int i = 0; i < NUM_MAX_LIGHTS; ++i) {

@@ -16,7 +16,7 @@ CubeComponent::~CubeComponent()
 
 void CubeComponent::Update(float ElapsedSeconds)
 {
-	Component::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 	if (_Size.x != Size.x || _Size.y != Size.y || _Size.z != Size.z)
 	{
 		_Size = Size;

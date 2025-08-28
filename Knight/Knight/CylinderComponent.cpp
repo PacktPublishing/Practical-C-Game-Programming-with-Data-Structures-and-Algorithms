@@ -20,7 +20,7 @@ CylinderComponent::~CylinderComponent()
 
 void CylinderComponent::Update(float ElapsedSeconds)
 {
-	Component::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 	if (Radius != _Radius || Height != _Height || Slices != _Slices)
 	{
 		_Radius = Radius;

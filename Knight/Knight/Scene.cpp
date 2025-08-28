@@ -7,8 +7,6 @@
 
 #include "rlgl.h"
 
-#include <cstring>
-#include <algorithm>
 #include <set>
 
 Scene::Scene()

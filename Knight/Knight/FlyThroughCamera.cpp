@@ -11,7 +11,7 @@ bool FlyThroughCamera::Update(float ElapsedSeconds)
 {
     Vector2 delta = GetMouseDelta();
 
-	SceneCamera::Update(ElapsedSeconds); // Call base class update
+	__super::Update(ElapsedSeconds); // Call base class update
 
     if (!IsActive)
         return false;

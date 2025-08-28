@@ -75,7 +75,7 @@ ModelComponent::~ModelComponent()
 
 void ModelComponent::Update(float ElapsedSeconds)
 {
-	Component::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 
 	if (_SceneActor)
 	{

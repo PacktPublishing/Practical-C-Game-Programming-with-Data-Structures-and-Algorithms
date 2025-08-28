@@ -17,7 +17,7 @@ SceneActor::SceneActor(Scene* Scene, const char* Name)
 
 bool SceneActor::AddComponent(Component* Component)
 {
-	if (SceneObject::AddComponent(Component))
+	if (__super::AddComponent(Component))
 	{
 		Component->_SceneActor = this;
 		return true;
@@ -27,7 +27,7 @@ bool SceneActor::AddComponent(Component* Component)
 
 bool SceneActor::Update(float ElapsedSeconds)
 {
-	if (!SceneObject::Update(ElapsedSeconds))
+	if (!__super::Update(ElapsedSeconds))
 	{
 		return false;
 	}

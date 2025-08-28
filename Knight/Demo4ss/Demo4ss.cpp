@@ -26,13 +26,13 @@ Demo4ss::Demo4ss()
 void Demo4ss::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
-	background = LoadTexture((std::string(RESOURCES_DIR) + "/textures/p10.png").c_str());
-	midground = LoadTexture((std::string(RESOURCES_DIR) + "/textures/p11.png").c_str());
-	foreground = LoadTexture((std::string(RESOURCES_DIR) + "/textures/p12.png").c_str());
+	background = LoadTexture("../../resources/textures/p10.png");
+	midground = LoadTexture("../../resources/textures/p11.png");
+	foreground = LoadTexture("../../resources/textures/p12.png");
 }
 
 // Unload resources used by the game
@@ -42,13 +42,13 @@ void Demo4ss::EndGame()
 	UnloadTexture(midground);   // Unload midground texture
 	UnloadTexture(foreground);  // Unload foreground texture
 
-	Knight::EndGame();
+	__super::EndGame();
 }
 
 // Update the scrolling positions of the layers
 void Demo4ss::Update(float ElapsedSeconds)
 {
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 
 	scrollingBack -= 0.2f;
 	scrollingMid -= 0.8f;
@@ -62,7 +62,7 @@ void Demo4ss::Update(float ElapsedSeconds)
 
 void Demo4ss::DrawGUI()
 {
-	Knight::DrawGUI();
+	__super::DrawGUI();
 
 	Vector2 v2;
 
@@ -89,6 +89,6 @@ void Demo4ss::DrawGUI()
 //Create resources such as fonts, shaders, etc.
 void Demo4ss::OnCreateDefaultResources()
 {
-	Knight::OnCreateDefaultResources();
-	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+	__super::OnCreateDefaultResources();
+	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

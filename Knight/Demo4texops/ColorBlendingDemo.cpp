@@ -59,7 +59,7 @@ ColorBlendingDemo::ColorBlendingDemo()
 
 void ColorBlendingDemo::Create()
 {
-	Image art = LoadImage((std::string(RESOURCES_DIR) + "/textures/lake.png").c_str());
+	Image art = LoadImage("../../resources/textures/lake.png");
 	texture = LoadTextureFromImage(art);
 	UnloadImage(art);
 	isReady = true;

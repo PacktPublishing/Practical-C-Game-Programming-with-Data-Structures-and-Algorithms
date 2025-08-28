@@ -1,7 +1,5 @@
 #include "ParticleComponent.h"
 
-#include <algorithm>
-
 ParticleComponent::ParticleComponent()
 {
     renderQueue = Component::eRenderQueueType::AlphaBlend;

@@ -1,6 +1,5 @@
 #include "raylib.h"
 #include "rlgl.h"
-#include <string>
 
 RenderTexture2D LoadRenderTextureEx(int width, int height);
 
@@ -23,8 +22,8 @@ int main() {
     RenderTexture2D gAlbedo = LoadRenderTextureEx(screenWidth, screenHeight);
 
     // Load shaders
-    Shader geometryShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/def_geometry.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/def_geometry.fs").c_str());
-    Shader lightingShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/def_lighting.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/def_lighting.fs").c_str());
+    Shader geometryShader = LoadShader("../../resources/shaders/glsl330/def_geometry.vs", "../../resources/shaders/glsl330/def_geometry.fs");
+    Shader lightingShader = LoadShader("../../resources/shaders/glsl330/def_lighting.vs", "../../resources/shaders/glsl330/def_lighting.fs");
 
     // Configure lighting shader uniforms
     Vector3 lightPosition = { 2.0f, 4.0f, 2.0f };
@@ -49,7 +48,7 @@ int main() {
 
     // Create scene objects
     Model model = LoadModelFromMesh(GenMeshCube(1.0f, 1.0f, 1.0f));
-    Texture2D texture = LoadTexture((std::string(RESOURCES_DIR) + "/models/obj/wall_diffuse.png").c_str());
+    Texture2D texture = LoadTexture("../../resources/models/obj/wall_diffuse.png");
     model.materials[0].maps[MATERIAL_MAP_ALBEDO].texture = texture;
 
     SetTargetFPS(60);

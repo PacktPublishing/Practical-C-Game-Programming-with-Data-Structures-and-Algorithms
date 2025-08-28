@@ -21,8 +21,6 @@
 #include "LitShadowRenderPass.h"
 #include "KnightUtils.h"
 
-#include <string>
-
 struct KnightConfig
 {
 	bool ShowFPS = false;

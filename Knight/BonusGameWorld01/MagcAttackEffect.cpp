@@ -1,5 +1,4 @@
 #include "MagicAttackEffect.h"
-#include <algorithm>
 
 MagicAttackEffect::MagicAttackEffect()
 {
@@ -70,7 +69,7 @@ void MagicAttackEffect::Draw(RenderHints* pRH)
 void MagicAttackEffect::Reset()
 {
     delayStart = 0.25f;
-    ParticleComponent::Reset();
+    __super::Reset();
     isEnabled = true; // Enable the effect when reset
 }
 

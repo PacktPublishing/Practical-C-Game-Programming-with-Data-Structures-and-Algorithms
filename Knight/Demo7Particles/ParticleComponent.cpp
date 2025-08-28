@@ -1,5 +1,4 @@
 #include "ParticleComponent.h"
-#include <algorithm>
 
 bool ParticleComponent::CreateFromFile(const char* path, int maxp, Vector3 v, Color ic, Vector3 isp)
 {
@@ -15,8 +14,6 @@ bool ParticleComponent::CreateFromFile(const char* path, int maxp, Vector3 v, Co
     initialColor = ic;
     initialSpeed = isp;
     particles.reserve(maxParticles);
-
-    return true;
 }
 
 void ParticleComponent::Update(float deltaTime)

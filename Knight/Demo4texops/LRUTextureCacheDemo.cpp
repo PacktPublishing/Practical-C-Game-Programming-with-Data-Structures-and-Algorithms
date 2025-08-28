@@ -1,14 +1,14 @@
-
+#pragma once
 
 #include "LRUTextureCacheDemo.h"
 
 #include <vector>
 
 vector<string> texturePaths = {
-    (std::string(RESOURCES_DIR) + "/textures/PokerDeckCards/12.png").c_str(),
-    (std::string(RESOURCES_DIR) + "/textures/PokerDeckCards/25.png").c_str(),
-    (std::string(RESOURCES_DIR) + "/textures/PokerDeckCards/50.png").c_str(),
-    (std::string(RESOURCES_DIR) + "/textures/PokerDeckCards/52.png").c_str()
+    "../../resources/textures/PokerDeckCards/12.png",
+    "../../resources/textures/PokerDeckCards/25.png",
+    "../../resources/textures/PokerDeckCards/50.png",
+    "../../resources/textures/PokerDeckCards/52.png"
 };
 
 LRUTextureCacheDemo::LRUTextureCacheDemo(int capacity) : textureCache(capacity)

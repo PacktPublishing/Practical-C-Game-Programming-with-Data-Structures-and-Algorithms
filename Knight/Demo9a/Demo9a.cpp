@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 
 void Demo9a::Start()
 {
-	Knight::Start();
+	__super::Start();
 
 	SetTargetFPS(30);
 
@@ -37,7 +37,7 @@ void Demo9a::Start()
 	Player = _Scene->CreateSceneObject<SceneActor>("PlayerCharacter");
 	Player->Position = Vector3{ 0.0f, 0.0f, -10.0f };
 	AnimModelComponent = Player->CreateAndAddComponent<ModelComponent>();
-	AnimModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	AnimModelComponent->SetAnimationMode(ModelComponent::Linear_interpolation);
 	AnimModelComponent->SetTransitionMode(ModelComponent::Linear);
 	Player->AddComponent(AnimModelComponent);
@@ -53,7 +53,7 @@ void Demo9a::EndGame()
 void Demo9a::Update(float DeltaTime)
 {
 	PlayerCharacterFSM->Update(DeltaTime);
-	Knight::Update(DeltaTime);
+	__super::Update(DeltaTime);
 }
 
 void Demo9a::DrawGUI()

@@ -10,9 +10,9 @@ LitDepthRenderPass::LitDepthRenderPass()
 
 bool LitDepthRenderPass::Create(Scene* sc)
 {
-	SceneRenderPass::Create(sc);
+	__super::Create(sc);
 
-	depthShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/kn_depth.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/kn_depth.fs").c_str());
+	depthShader = LoadShader("../../resources/shaders/glsl330/kn_depth.vs", "../../resources/shaders/glsl330/kn_depth.fs");
 
 	Hints.pOverrideShader = &depthShader;
 
@@ -99,7 +99,7 @@ bool LitDepthRenderPass::OnAddToRender(Component* pSC, SceneObject* pSO)
 	//If this Component do not cast shadow to other objects in the scene, no need to redner in depth render pass
 	if (pSC->castShadow == Component::eShadowCastingType::NoShadow)
 		return false;
-	return SceneRenderPass::OnAddToRender(pSC, pSO);
+	return __super::OnAddToRender(pSC, pSO);
 }
 
 // Unload shadowmap render texture from GPU memory (VRAM)

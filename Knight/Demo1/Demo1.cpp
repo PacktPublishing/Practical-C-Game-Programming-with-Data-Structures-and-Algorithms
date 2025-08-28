@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 
 void Demo1::Start()
 {
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -35,8 +35,8 @@ void Demo1::Start()
 
 	modelActor = _Scene->CreateSceneObject<SceneActor>("Castle");
 	ModelComponent* modelComponent = modelActor->CreateAndAddComponent<ModelComponent>();
-	modelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/castle.obj").c_str(), (std::string(RESOURCES_DIR) + "/models/obj/castle_diffuse.png").c_str());
-	
+	modelComponent->Load3DModel("../../resources/models/obj/castle.obj", "../../resources/models/obj/castle_diffuse.png");
+
 	cubeActor = new SceneActor(_Scene, "Cube");
 	cubeActor->SetParent(modelActor);
 	cubeActor->Position = Vector3{ 40, 0, 0 };
@@ -80,14 +80,14 @@ void Demo1::Start()
 	characterActor->Position.z = 30.0f;
 	characterActor->Rotation.y = 90.0f;
 	ModelComponent* animModelComponent = characterActor->CreateAndAddComponent<ModelComponent>();
-	animModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animModelComponent->SetAnimation(10);
 	characterActor->AddComponent(animModelComponent);
 }
 
 void Demo1::EndGame()
 {
-	Knight::EndGame();
+	__super::EndGame();
 }
 
 void Demo1::Update(float ElapsedSeconds)
@@ -107,10 +107,10 @@ void Demo1::Update(float ElapsedSeconds)
 
 	modelActor->Rotation.y -= ElapsedSeconds * spinSpeed;
 
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }
 
 void Demo1::DrawFrame()
 {
-	Knight::DrawFrame();
+	__super::DrawFrame();
 }

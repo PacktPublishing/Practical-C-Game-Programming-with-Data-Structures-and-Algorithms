@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 void Demo5TrkCam::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -29,7 +29,7 @@ void Demo5TrkCam::Start()
 	Actor->Position = Vector3{ -10.f,0.15f,0.f };
 	Actor->Rotation = Vector3{ 0,90,0 };
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
+	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
 	Actor->AddComponent(animPlayerComponent);
 
@@ -60,7 +60,7 @@ void Demo5TrkCam::Update(float ElapsedSeconds)
 	if (angle > 360) angle -= 360; // Normalize angle to [0, 360)
 	Actor->Rotation = Vector3{ 0, angle, 0 };
 
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 
 }
 
@@ -69,13 +69,13 @@ void Demo5TrkCam::DrawFrame()
 {
 	OnRailCamera->Draw(); //render waypoint as cube
 	DrawGrid(50, 3.0f);
-	Knight::DrawFrame();
+	__super::DrawFrame();
 }
 
 //Display current status (on waypoint, or moving to next waypoint, etc.)
 void Demo5TrkCam::DrawGUI()
 {
-	Knight::DrawGUI();
+	__super::DrawGUI();
 
 	if (OnRailCamera->waypointWaitTimer > 0)
 		DrawText(TextFormat("Stop at waypoint #%d, wait time left=%1.2f", OnRailCamera->currentWaypoint, OnRailCamera->waypointWaitTimer), 10, 50, 40, WHITE);
@@ -86,6 +86,6 @@ void Demo5TrkCam::DrawGUI()
 // Load default resources for the demo
 void Demo5TrkCam::OnCreateDefaultResources()
 {
-	Knight::OnCreateDefaultResources();
-	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+	__super::OnCreateDefaultResources();
+	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }

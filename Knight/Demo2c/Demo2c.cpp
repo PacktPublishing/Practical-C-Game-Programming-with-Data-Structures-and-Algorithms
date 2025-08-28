@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo2c::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	Knight::Start();
+	__super::Start();
 
 	Config.ShowFPS = true;
 
@@ -42,7 +42,7 @@ void Demo2c::Update(float ElapsedSeconds)
 		enemy.Update(ElapsedSeconds);
 	}		
 	terrain->Update(ElapsedSeconds);
-	Knight::Update(ElapsedSeconds);
+	__super::Update(ElapsedSeconds);
 }
 
 //Initialize entities in the scene
@@ -85,6 +85,6 @@ void Demo2c::DrawGUI()
 //Load default resources for the demo
 void Demo2c::OnCreateDefaultResources()
 {
-	Knight::OnCreateDefaultResources();
-	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
+	__super::OnCreateDefaultResources();
+	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
 }
