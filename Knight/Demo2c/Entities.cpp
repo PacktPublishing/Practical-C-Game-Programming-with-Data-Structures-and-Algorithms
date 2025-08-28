@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include "Demo2c.h"
 
@@ -23,7 +23,7 @@ void PlayerEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Position = Vector3{ 0, -3, 30.0f };
 	Actor->Rotation.y = 180.0f;
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 	Actor->AddComponent(animPlayerComponent);
 }
@@ -44,7 +44,7 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Scale = Vector3{ 3.0f, 5.0f, 3.0f };
 	Actor->Position = Vector3{ (float)x, 0.0f, 0.0f };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
+	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/greenman.glb").c_str());
 	animEnemyComponent->SetAnimation(0);
 	Actor->AddComponent(animEnemyComponent);
 }
@@ -86,8 +86,8 @@ void TerrainEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Position = Vector3{ 0, -5, 0 };
 	Actor->Scale = Vector3{ 20, 1, 20 };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj");
-	Image image = LoadImage("../../resources/models/obj/bridge_diffuse.png");
+	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/bridge.obj").c_str());
+	Image image = LoadImage((std::string(RESOURCES_DIR) + "/models/obj/bridge_diffuse.png").c_str());
 	Texture2D tex = LoadTextureFromImage(image);
 	UnloadImage(image);
 	animEnemyComponent->GetModel()->materials[0].maps[0].texture = tex;

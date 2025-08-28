@@ -22,7 +22,7 @@ PlaneComponent::~PlaneComponent()
 
 void PlaneComponent::Update(float ElapsedSeconds)
 {
-	__super::Update(ElapsedSeconds);
+	Component::Update(ElapsedSeconds);
 	if (Width != _Width || Height != _Height || Cols != _Cols || Rows != _Rows)
 	{
 		_Width = Width;

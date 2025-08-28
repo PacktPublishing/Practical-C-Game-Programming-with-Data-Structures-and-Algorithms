@@ -3,7 +3,7 @@
 #include "Random.h"
 #include "Shuffler.h"
 
-#define IMAGE_FILENAME_BUFFER_SIZE 64
+#define IMAGE_FILENAME_BUFFER_SIZE 255
 #define DECK_CARD_COUNT 52
 #define PICK_CARDS_COUNT 13
 int CardIDs[DECK_CARD_COUNT];
@@ -23,7 +23,7 @@ void Demo3d::Start()
 {
 	char imageFile[IMAGE_FILENAME_BUFFER_SIZE];
 
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -39,7 +39,7 @@ void Demo3d::Start()
 		}
 
 		//Load card image
-		sprintf_s(imageFile, IMAGE_FILENAME_BUFFER_SIZE, "../../resources/textures/PokerDeckCards/%d.png", i);
+		sprintf_s(imageFile, IMAGE_FILENAME_BUFFER_SIZE, (std::string(RESOURCES_DIR) + "/textures/PokerDeckCards/%d.png").c_str(), i);
 		if (FileExists(imageFile))
 		{
 			CardImages[i] = LoadTexture(imageFile);
@@ -53,7 +53,7 @@ void Demo3d::EndGame()
 	{
 		UnloadTexture(CardImages[i]);
 	}
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 
@@ -69,7 +69,7 @@ void Demo3d::Update(float ElapsedSeconds)
 		SortDealtCards();
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 void Demo3d::DrawGUI()

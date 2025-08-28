@@ -4,10 +4,10 @@
 
 bool ForwardRenderPass::Create(Scene* sc)
 {
-	__super::Create(sc);
+	SceneRenderPass::Create(sc);
 
 	//default forward rendering pipeline use simple lighting model
-	LightShader = LoadShader("../../resources/shaders/glsl330/kn_lit.vs", "../../resources/shaders/glsl330/kn_lit.fs");
+	LightShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/kn_lit.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/kn_lit.fs").c_str());
 	InitLightUniforms(LightShader);
 	alphaTestLoc = GetShaderLocation(LightShader, "alphaTest");
 

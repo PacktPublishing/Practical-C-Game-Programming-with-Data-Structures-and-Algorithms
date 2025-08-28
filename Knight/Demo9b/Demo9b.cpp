@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 
 void Demo9b::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	SetTargetFPS(30);
 
@@ -45,7 +45,7 @@ void Demo9b::Start()
 	Player = _Scene->CreateSceneObject<SceneActor>("Character");
 	Player->Position = Vector3{ 0.0f, 0.0f, -10.0f };
 	AnimModelComponent = Player->CreateAndAddComponent<ModelComponent>();
-	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	AnimModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	AnimModelComponent->SetAnimationMode(ModelComponent::Linear_interpolation);
 	AnimModelComponent->SetTransitionMode(ModelComponent::Linear);
 	Player->AddComponent(AnimModelComponent);
@@ -55,7 +55,7 @@ void Demo9b::Start()
 	Enemy->Position = Vector3{ 0.0f, 0.0f, 15.0f };
 	Enemy->Rotation = Vector3{ 0.0f, 180.0f, 0.0f };
 	EnemyAnimModelComponent = Enemy->CreateAndAddComponent<ModelComponent>();
-	EnemyAnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb", 
+	EnemyAnimModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str(), 
 		nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, RED);
 	EnemyAnimModelComponent->SetAnimationMode(ModelComponent::Linear_interpolation);
 	EnemyAnimModelComponent->SetTransitionMode(ModelComponent::Linear);
@@ -76,7 +76,7 @@ void Demo9b::Update(float DeltaTime)
 	PlayerCharacterFSM->Update(DeltaTime);
 	EnemyBT->Update(DeltaTime);
 
-	__super::Update(DeltaTime);
+	Knight::Update(DeltaTime);
 }
 
 void Demo9b::DrawGUI()

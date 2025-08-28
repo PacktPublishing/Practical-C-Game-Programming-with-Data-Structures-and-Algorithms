@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
 void Demo7Billboard::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -23,7 +23,7 @@ void Demo7Billboard::Start()
 	player = _Scene->CreateSceneObject<SceneActor>("Player");
 	player->Scale = Vector3{ 0.2f, 0.2f, 0.2f };
 	ModelComponent* animPlayerComponent = player->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 
 	mainCamera = _Scene->CreateSceneObject<FlyThroughCamera>("Chase Camera");
@@ -34,11 +34,11 @@ void Demo7Billboard::Start()
 	ground->Position = Vector3{ 0, -3.8f, 0 };
 	ground->Scale = Vector3{ 2, 1, 2 };
 	ModelComponent* animEnemyComponent = ground->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj", "../../resources/models/obj/bridge_diffuse.png");
+	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/bridge.obj").c_str(), (std::string(RESOURCES_DIR) + "/models/obj/bridge_diffuse.png").c_str());
 	ground->AddComponent(animEnemyComponent);
 
 	//Load a texture as billboard image
-	billboardImage = LoadTexture("../../resources/textures/p15-1.png");    // Our billboard texture
+	billboardImage = LoadTexture((std::string(RESOURCES_DIR) + "/textures/p15-1.png").c_str());    // Our billboard texture
 
 	// Create a random device and seed the Mersenne Twister engine
 	std::random_device rd;
@@ -90,18 +90,18 @@ void Demo7Billboard::Update(float ElapsedSeconds)
 
 	mainCamera->SetLookAtPosition(player->Position);
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 void Demo7Billboard::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	DrawText("Drag mouse with right click to rotate camera.", 10, 50, 40, WHITE);
 }
 
 //Create default resources like fonts, textures, etc.
 void Demo7Billboard::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	Knight::OnCreateDefaultResources();
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }

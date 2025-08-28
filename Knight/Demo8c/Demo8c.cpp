@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
 
 void Demo8c::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	FrameRate = 60;
 	SetTargetFPS(FrameRate);
@@ -76,12 +76,12 @@ void Demo8c::Update(float ElapsedSeconds)
 		SetTargetPosition(Vector3Add(_TargetPosition, Vector3{ 0, 0, ElapsedSeconds * moveSpeed }));
 	}
 
-	__super::Update(ElapsedSeconds * TimeScale);
+	Knight::Update(ElapsedSeconds * TimeScale);
 }
 
 void Demo8c::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	DrawRoboticArm();
 }
 

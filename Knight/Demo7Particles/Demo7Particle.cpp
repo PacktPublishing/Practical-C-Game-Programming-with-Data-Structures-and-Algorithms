@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 void Demo7Particle::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -38,12 +38,12 @@ void Demo7Particle::Start()
 	Actor->Position = Vector3{ 0.f,0.5f,0.f };
 	Actor->Rotation = Vector3{ 0,0,0 };
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 
 	// Set up particle system
 	pParticle = Actor->CreateAndAddComponent<ParticleComponent>();
-	pParticle->CreateFromFile("../../resources/textures/glow.png", PARTICLE_COUNT, fountainOrigin, Color{ 255, 150, 50, 255 }, Vector3{0,0,0});
+	pParticle->CreateFromFile((std::string(RESOURCES_DIR) + "/textures/glow.png").c_str(), PARTICLE_COUNT, fountainOrigin, Color{ 255, 150, 50, 255 }, Vector3{0,0,0});
 
 }
 
@@ -67,19 +67,19 @@ void Demo7Particle::Update(float ElapsedSeconds)
 		Actor->Rotation.y -= 1;  // Rotate right
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 // Draw the frame
 void Demo7Particle::DrawFrame()
 {
 	DrawGrid(10, 1);
-	__super::DrawFrame();
+	Knight::DrawFrame();
 }
 
 //Create default resources for the demo
 void Demo7Particle::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	Knight::OnCreateDefaultResources();
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }

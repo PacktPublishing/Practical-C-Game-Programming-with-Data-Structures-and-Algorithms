@@ -1,6 +1,9 @@
 #include "SceneObject.h"
 #include "Scene.h"
 
+#include <cstring>
+#include <algorithm>
+
 SceneObject::SceneObject(Scene* Scene, const char* Name)
 	: ID(0)
 	, IsActive(true)
@@ -64,7 +67,7 @@ void SceneObject::SetParent(SceneObject* parent)
 	//Remove from current parent
 	if (Parent != nullptr) 
 	{
-		Parent->_Children.erase(remove(Parent->_Children.begin(), Parent->_Children.end(), this), Parent->_Children.end());
+		Parent->_Children.erase(std::remove(Parent->_Children.begin(), Parent->_Children.end(), this), Parent->_Children.end());
 	}
 
 	//add into parent's children

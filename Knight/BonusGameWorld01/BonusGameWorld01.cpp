@@ -8,21 +8,21 @@
 //
 // This project is part of a series of bonus demos we will continue to release  
 // in the Git repository. We want to show you how we improve and refactor a larger project,  
-// transforming it from a “work-in-progress,” somewhat messy state into a better-structured project.
+// transforming it from a ï¿½work-in-progress,ï¿½ somewhat messy state into a better-structured project.
 //
 // Think of this demo like this: as you read through most chapters,  
-// you might have thought to yourself, “Why not put everything together?”  
-// So you take action in one quick step — copy/paste code, assemble it,  
+// you might have thought to yourself, ï¿½Why not put everything together?ï¿½  
+// So you take action in one quick step ï¿½ copy/paste code, assemble it,  
 // and use it as a proof of concept.
 //
 // The component code used in this sample is introduced in the book:
-// - The overall Knight application architecture — explained in Chapter 2
-// - Simulation of daylight changes — explained in Chapter 4
-// - BillboardComponent — explained in Chapter 7
-// - FollowUpCamera — explained in Chapter 5
-// - ParticleComponent — explained in Chapter 7
-// - QuadTreeTerrainComponent — explained in Chapter 7
-// - SkyboxComponent — explained in Chapter 7
+// - The overall Knight application architecture ï¿½ explained in Chapter 2
+// - Simulation of daylight changes ï¿½ explained in Chapter 4
+// - BillboardComponent ï¿½ explained in Chapter 7
+// - FollowUpCamera ï¿½ explained in Chapter 5
+// - ParticleComponent ï¿½ explained in Chapter 7
+// - QuadTreeTerrainComponent ï¿½ explained in Chapter 7
+// - SkyboxComponent ï¿½ explained in Chapter 7
 //
 // The code is meant to be a demonstration of how to use these components together, 
 // rather than a polished game. 
@@ -49,7 +49,7 @@ BonusGameWorld01::BonusGameWorld01()
 void BonusGameWorld01::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -104,7 +104,7 @@ void BonusGameWorld01::Start()
 void BonusGameWorld01::EndGame()
 {
 	_Entities.clear();
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 void BonusGameWorld01::Update(float ElapsedSeconds)
@@ -158,7 +158,7 @@ void BonusGameWorld01::Update(float ElapsedSeconds)
 	} 
 
 	// Update the scene graph and all SceneObjects.
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 
 	//after all the SceneObjects are updated, it's time to make adjustments to the 
 	// player position and camera.
@@ -234,7 +234,7 @@ void BonusGameWorld01::DrawFrame()
 
 void BonusGameWorld01::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	//Draw the shadow map texture for debugging purpose.
 	//Rectangle sr = { 0,0,1023, 1023 };
 	//Rectangle dr = { 0,0,255, 255 };
@@ -247,10 +247,10 @@ void BonusGameWorld01::DrawGUI()
 
 void BonusGameWorld01::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 
 	UnloadFont(_Font);
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 
 	Config.EnableDefaultLight = false; //Disable default light. 	
 	Config.EnableDefaultRenderPasses = false; //Disable default render passes, we will use ours.

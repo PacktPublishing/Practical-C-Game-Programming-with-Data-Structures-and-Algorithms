@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Random.h"
+#include <cstdio>
+#include <cstring>
 
 class Selector
 {

@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo2b::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	//Show FPS counter 
 	Config.ShowFPS = true;
@@ -44,7 +44,7 @@ void Demo2b::Update(float ElapsedSeconds)
 	terrain->Update(ElapsedSeconds);
 
 	//Don't forget to call parent class Update method so Scene can be updated too.
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Initialize entities for the demo
@@ -87,8 +87,8 @@ void Demo2b::DrawGUI()
 //Initialize default resources for the demo, like fonts, textures, etc.
 void Demo2b::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 
 	//Replace defaut low resolution font with a TrueType font for the demo
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }

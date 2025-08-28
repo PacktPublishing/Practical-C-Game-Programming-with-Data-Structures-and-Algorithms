@@ -2,6 +2,9 @@
 
 #include "raylib.h"
 
+class SceneActor;
+class SceneObject;
+
 typedef struct _RenderHints {
 
 	// If not null, this shader will be used to render this component

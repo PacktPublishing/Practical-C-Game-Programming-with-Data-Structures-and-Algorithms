@@ -12,9 +12,9 @@ ShadowMapRenderPass::ShadowMapRenderPass(ShadowSceneLight* l, int id)
 
 bool ShadowMapRenderPass::Create(Scene *sc)
 {
-	__super::Create(sc);
+	SceneRenderPass::Create(sc);
 
-	shadowShader = LoadShader("../../resources/shaders/glsl330/shadowmap.vs", "../../resources/shaders/glsl330/shadowmap-pcf.fs");
+	shadowShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/shadowmap.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/shadowmap-pcf.fs").c_str());
 	lightDirLoc = GetShaderLocation(shadowShader, "lightDir");
 	lightColLoc = GetShaderLocation(shadowShader, "lightColor");
 	shadowShader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shadowShader, "viewPos");

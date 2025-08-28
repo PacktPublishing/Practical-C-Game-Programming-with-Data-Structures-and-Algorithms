@@ -25,14 +25,14 @@ int main(int argc, char* argv[])
 void Demo6Light::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
 	SetConfigFlags(FLAG_MSAA_4X_HINT);  // Enable Multi Sampling Anti Aliasing 4x (if available)
 
-	shader = LoadShader(TextFormat("../../resources/shaders/glsl%i/lighting.vs", GLSL_VERSION),
-		TextFormat("../../resources/shaders/glsl%i/lighting.fs", GLSL_VERSION));
+	shader = LoadShader(TextFormat((std::string(RESOURCES_DIR) + "/shaders/glsl%i/lighting.vs").c_str(), GLSL_VERSION),
+		TextFormat((std::string(RESOURCES_DIR) + "/shaders/glsl%i/lighting.fs").c_str(), GLSL_VERSION));
 
 	_Scene->_CurrentRenderPass->Hints.pOverrideShader = &shader;
 
@@ -56,7 +56,7 @@ void Demo6Light::Start()
 	actor->Position = Vector3{ 0.f,0.5f,0.f };
 	actor->Rotation = Vector3{ 0,0,0 };
 	ModelComponent* animPlayerComponent = actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 	actor->AddComponent(animPlayerComponent);
 	for (int i = 0; i < animPlayerComponent->GetModel()->materialCount; i++) {
@@ -67,8 +67,8 @@ void Demo6Light::Start()
 	pTerrain->Position = Vector3{ 0, -3.5f, 0 };
 	pTerrain->Scale = Vector3{ 1, 1, 1 };
 	ModelComponent* animEnemyComponent = pTerrain->CreateAndAddComponent<ModelComponent>();
-	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj");
-	Image image = LoadImage("../../resources/models/obj/bridge_diffuse.png");
+	animEnemyComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/bridge.obj").c_str());
+	Image image = LoadImage((std::string(RESOURCES_DIR) + "/models/obj/bridge_diffuse.png").c_str());
 	Texture2D tex = LoadTextureFromImage(image);
 	UnloadImage(image);
 	animEnemyComponent->GetModel()->materials[0].maps[0].texture = tex;
@@ -107,13 +107,13 @@ void Demo6Light::Update(float ElapsedSeconds)
 
 	for (int i = 0; i < MAX_LIGHTS; i++) UpdateLightValues(shader, lights[i]);
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Render the frame and light sources as colored spheres
 void Demo6Light::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	// Draw spheres to show where the lights are
 	for (int i = 0; i < MAX_LIGHTS; i++)
 	{
@@ -131,6 +131,6 @@ void Demo6Light::DrawGUI()
 //Create default resources for the demo
 void Demo6Light::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	Knight::OnCreateDefaultResources();
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }

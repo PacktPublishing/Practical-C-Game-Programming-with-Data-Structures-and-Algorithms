@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include "Demo2f.h"
 
@@ -14,7 +14,7 @@ void PlayerEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Position = Vector3{ 0, -3, 30.0f };
 	Actor->Rotation.y = 180.0f;
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 	Actor->AddComponent(animPlayerComponent);
 }
@@ -29,7 +29,7 @@ void PlayerEntity::Update(float elaspedTime)
 	else {
 		rechargeTime += elaspedTime;
 	}
-	__super::Update(elaspedTime);
+	AliveEntity::Update(elaspedTime);
 }
 
 void PlayerEntity::DrawGUI()
@@ -60,7 +60,7 @@ void PlayerEntity::DrawGUI()
 
 void PlayerEntity::Die()
 {
-	__super::Die();
+	AliveEntity::Die();
 
 	Demo2f::Log("Player dies!");
 	Demo2f::GameOver(YouLose);

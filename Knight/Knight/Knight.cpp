@@ -5,6 +5,8 @@
 #include "raylib.h"
 #include "Knight.h"
 #include "rlgl.h"
+#include <cstdio>
+#include <cstring>
 
 Knight* Knight::Instance = nullptr;
 
@@ -52,7 +54,7 @@ void Knight::AfterCreateDefaultResources()
 	if (_Font.texture.id == 0 || _Font.glyphCount == 0)
 	{
 		TRACELOG(LOG_WARNING, "Knight: No default font loaded, using default font");
-		_Font = LoadFontEx("../../resources/fonts/mecha.png", 40, nullptr, 0);
+		_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/mecha.png").c_str(), 40, nullptr, 0);
 		if (_Font.texture.id == 0 || _Font.glyphCount == 0)
 		{
 			TRACELOG(LOG_ERROR, "SYSTEM: Failed to load default font");

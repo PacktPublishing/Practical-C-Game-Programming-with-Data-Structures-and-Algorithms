@@ -11,9 +11,9 @@ DepthRenderPass::DepthRenderPass(ShadowSceneLight* l)
 
 bool DepthRenderPass::Create(Scene* sc)
 {
-	__super::Create(sc);
+	ForwardRenderPass::Create(sc);
 
-	depthShader = LoadShader("../../resources/shaders/glsl330/kn-lit-depth.vs", "../../resources/shaders/glsl330/shadow_depth.fs");
+	depthShader = LoadShader((std::string(RESOURCES_DIR) + "/shaders/glsl330/kn-lit-depth.vs").c_str(), (std::string(RESOURCES_DIR) + "/shaders/glsl330/shadow_depth.fs").c_str());
 	alphaTestLoc = GetShaderLocation(depthShader, "alphaTest");
 
 	Hints.pOverrideShader = &depthShader;
@@ -115,7 +115,7 @@ bool DepthRenderPass::OnAddToRender(Component* pSC, SceneObject* pSO)
 	//If this Component do not cast shadow to other objects in the scene, no need to redner in depth render pass
 	if (pSC->castShadow == Component::eShadowCastingType::NoShadow)
 		return false;
-	return __super::OnAddToRender(pSC, pSO);
+	return ForwardRenderPass::OnAddToRender(pSC, pSO);
 }
 
 void DepthRenderPass::BeginShadowMap(Scene* sc, SceneCamera* pOverrideCamera)

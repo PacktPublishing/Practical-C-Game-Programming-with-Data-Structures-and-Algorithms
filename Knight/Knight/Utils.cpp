@@ -2,9 +2,11 @@
 
 #include "rlgl.h"
 
+#include <config.h>  // raylib
+
+#include <cstring>
 #include <vector>
 #include <unordered_map>
-#include <config.h>
 
 extern Rectangle& CenterRectangle(Rectangle& r, int width, int height)
 {

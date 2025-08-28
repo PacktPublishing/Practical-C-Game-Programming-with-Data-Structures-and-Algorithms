@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 
 void Demo3b::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -37,7 +37,7 @@ void Demo3b::Start()
 
 	Castle = _Scene->CreateSceneObject<SceneActor>("Castle");
 	ModelComponent* modelComponent = Castle->CreateAndAddComponent<ModelComponent>();
-	modelComponent->Load3DModel("../../resources/models/obj/castle.obj", "../../resources/models/obj/castle_diffuse.png");
+	modelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/obj/castle.obj").c_str(), (std::string(RESOURCES_DIR) + "/models/obj/castle_diffuse.png").c_str());
 
 	SpawnPointA = _Scene->CreateSceneObject<SceneActor>("SpawnPoint A");
 	SpawnPointA->Position = SpawnPoints[0];
@@ -70,7 +70,7 @@ void Demo3b::Start()
 	Character1->Scale = Vector3{ 3.0f, 3.0f, 3.0f };
 	Character1->Rotation.y = 90.0f;
 	ModelComponent* animModelComponent = Character1->CreateAndAddComponent<ModelComponent>();
-	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb",
+	animModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str(),
 		nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, RED);
 	animModelComponent->SetAnimation(10);
 	Character1->AddComponent(animModelComponent);
@@ -79,7 +79,7 @@ void Demo3b::Start()
 	Character2->Scale = Vector3{ 3.0f, 3.0f, 3.0f };
 	Character2->Rotation.y = 90.0f;
 	animModelComponent = Character2->CreateAndAddComponent<ModelComponent>();
-	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb",
+	animModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str(),
 		nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, YELLOW);
 	animModelComponent->SetAnimation(10);
 	Character2->AddComponent(animModelComponent);
@@ -107,5 +107,5 @@ void Demo3b::Update(float ElapsedSeconds)
 		PlaceCharacters();
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }

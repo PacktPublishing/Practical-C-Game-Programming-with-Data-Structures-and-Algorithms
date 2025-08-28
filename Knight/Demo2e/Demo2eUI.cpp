@@ -9,7 +9,7 @@
 
 void InGameDialogue::Create(UIPopupManager* uim)
 {
-	__super::Create(uim);
+	UIPopup::Create(uim);
 }
 
 void InGameDialogue::Update(float interval)
@@ -37,7 +37,7 @@ void InGameDialogue::Draw()
 
 void SettingsDialogue::Create(UIPopupManager* uim)
 {
-	__super::Create(uim);
+	UIPopup::Create(uim);
 }
 
 void SettingsDialogue::Update(float interval)
@@ -69,7 +69,7 @@ SoundDialogue::SoundDialogue()
 
 void SoundDialogue::Create(UIPopupManager* uim)
 {
-	__super::Create(uim);
+	UIPopup::Create(uim);
 }
 
 void SoundDialogue::Update(float interval)

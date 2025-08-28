@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo5MultiCams::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -32,7 +32,7 @@ void Demo5MultiCams::Start()
 	Actor->Position = Vector3{ 0.f,0.1f,0.f };
 	Actor->Rotation = Vector3{ 0,90,0 };
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 	Actor->AddComponent(animPlayerComponent);
 
@@ -78,7 +78,7 @@ void Demo5MultiCams::Update(float ElapsedSeconds)
 	pTopDownCamera->Update(ElapsedSeconds);
 
 	//Update the scene
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Render both views
@@ -121,7 +121,7 @@ void Demo5MultiCams::DrawFrame()
 //Draw on-screen instructions
 void Demo5MultiCams::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	DrawTextureRec(ChaseCamRT.texture, splitScreenRect, Vector2{ 0, 0 }, WHITE);
 	DrawTextureRec(TopDownCamRT.texture, splitScreenRect, Vector2{ SCREEN_WIDTH / 2.0f, 0 }, WHITE);
@@ -144,7 +144,7 @@ void Demo5MultiCams::DrawGameWorld(SceneCamera *pCam)
 // This function is called when the engine is ready to create default resources like fonts, textures, etc.
 void Demo5MultiCams::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	Knight::OnCreateDefaultResources();
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 
 }

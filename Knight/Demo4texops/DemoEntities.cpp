@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include "Demo4TexOps.h"
 
@@ -15,7 +15,7 @@ SimpleDrawTextureDemo::SimpleDrawTextureDemo()  // Initialize texture to default
 
 void SimpleDrawTextureDemo::Create()
 {
-	Image art = LoadImage("../../resources/textures/demoart.png");
+	Image art = LoadImage((std::string(RESOURCES_DIR) + "/textures/demoart.png").c_str());
 	texture = LoadTextureFromImage(art);
 	UnloadImage(art);
 	isReady = true;
@@ -41,11 +41,11 @@ CompressTextureDemo::CompressTextureDemo()
 
 void CompressTextureDemo::Create()
 {
-	Image art_org = LoadImage("../../resources/textures/demoart.png");
+	Image art_org = LoadImage((std::string(RESOURCES_DIR) + "/textures/demoart.png").c_str());
 	original = LoadTextureFromImage(art_org);
 	UnloadImage(art_org);
 
-	Image art_cmp = LoadImage("../../resources/textures/demoart.dds");
+	Image art_cmp = LoadImage((std::string(RESOURCES_DIR) + "/textures/demoart.dds").c_str());
 	compressed = LoadTextureFromImage(art_cmp);
 	UnloadImage(art_cmp);
 
@@ -77,7 +77,7 @@ DrawPartialRotateDemo::DrawPartialRotateDemo()
 
 void DrawPartialRotateDemo::Create()
 {
-	Image art = LoadImage("../../resources/textures/demoart.png");
+	Image art = LoadImage((std::string(RESOURCES_DIR) + "/textures/demoart.png").c_str());
 	texture = LoadTextureFromImage(art);
 	UnloadImage(art);
 	isReady = true;

@@ -1,6 +1,8 @@
 #include "Knight.h"
 #include "Demo8a.h"
 
+#include <cstring>
+
 PerspectiveCamera* camera;
 SceneActor* Character;
 ModelComponent* AnimModelComponent;
@@ -19,7 +21,7 @@ int main(int argc, char* argv[])
 
 void Demo8a::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	FrameRate = 30;
 	SetTargetFPS(FrameRate);
@@ -41,7 +43,7 @@ void Demo8a::Start()
 	Character->Position = Vector3 { 0.0f, 0.0f, 0.0f };
 	Character->Rotation.y = -90.0f;
 	AnimModelComponent = Character->CreateAndAddComponent<ModelComponent>();
-	AnimModelComponent->Load3DModel("../../resources/models/m3d/cesium_man.m3d");
+	AnimModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/m3d/cesium_man.m3d").c_str());
 	AnimModelComponent->SetAnimation(0);
 	Character->AddComponent(AnimModelComponent);
 }
@@ -96,7 +98,7 @@ void Demo8a::Update(float ElapsedSeconds)
 		TimeScale -= 0.1f;
 	}
 
-	__super::Update(ElapsedSeconds * TimeScale);
+	Knight::Update(ElapsedSeconds * TimeScale);
 }
 
 void Demo8a::DrawGUI()

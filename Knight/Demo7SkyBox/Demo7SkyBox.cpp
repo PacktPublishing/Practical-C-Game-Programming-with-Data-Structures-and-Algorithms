@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 void Demo7Skybox::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -28,7 +28,7 @@ void Demo7Skybox::Start()
 
 	//pSkyBox = new SkyboxComponent();
 	pSkyBox = pMainCamera->CreateAndAddComponent<SkyboxComponent>();
-	pSkyBox->CreateFromFile("../../resources/textures/skybox2.png", CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE, 20.0f, false);
+	pSkyBox->CreateFromFile((std::string(RESOURCES_DIR) + "/textures/skybox2.png").c_str(), CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE, 20.0f, false);
 
 	//Place player
 	Actor = _Scene->CreateSceneObject<SceneActor>("Player");
@@ -36,7 +36,7 @@ void Demo7Skybox::Start()
 	Actor->Position = Vector3{ 0.f,0.0f,0.f };
 	Actor->Rotation = Vector3{ 0,0,0 };
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
-	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animPlayerComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animPlayerComponent->SetAnimation(6);
 }
 
@@ -60,7 +60,7 @@ void Demo7Skybox::Update(float ElapsedSeconds)
 		Actor->Rotation.y -= 1;  // Rotate right
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 
 	pSkyBox->Update(ElapsedSeconds);
 }
@@ -68,7 +68,7 @@ void Demo7Skybox::Update(float ElapsedSeconds)
 void Demo7Skybox::DrawFrame()
 {
 	pSkyBox->Draw();
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	DrawGrid(10, 1.0f);
 }
 
@@ -154,8 +154,8 @@ static TextureCubemap GenTextureCubemap(Shader shader, Texture2D panorama, int s
 
 void Demo7Skybox::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
+	Knight::OnCreateDefaultResources();
 
 	UnloadFont(_Font);
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }

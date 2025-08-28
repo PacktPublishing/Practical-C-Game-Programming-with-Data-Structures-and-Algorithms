@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 
 void Demo3f::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	camera = _Scene->CreateSceneObject<PerspectiveCamera>("Camera");
 	camera->SetPosition(Vector3{0.0f, 50.0f, -120.0f});
@@ -34,7 +34,7 @@ void Demo3f::Start()
 	Character->Position = Vector3 { 0.0f, 0.0f, -60.0f };
 	Character->Rotation.y = 0.0f;
 	ModelComponent* animModelComponent = Character->CreateAndAddComponent<ModelComponent>();
-	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	animModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	animModelComponent->SetAnimation(2);
 	Character->AddComponent(animModelComponent);
 }
@@ -49,13 +49,13 @@ void Demo3f::Update(float ElapsedSeconds)
 		bullet->SetPosition(startPos, Vector3{ 0.0f, 0.0f, 50.0f });
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 	_bulletPool.Update(ElapsedSeconds);
 }
 
 void Demo3f::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	_bulletPool.Draw();
 }
 

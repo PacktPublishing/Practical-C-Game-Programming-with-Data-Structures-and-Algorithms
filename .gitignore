@@ -1,4 +1,5 @@
 #Ignore folders
+build/
 
 KnightDemo/x64
 Knight/x64

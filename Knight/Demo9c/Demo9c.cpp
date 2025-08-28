@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 
 void Demo9c::Start()
 {
-	__super::Start();
+	Knight::Start();
 
 	SetTargetFPS(30);
 
@@ -41,7 +41,7 @@ void Demo9c::Start()
 	Character->Position = Vector3 { -35.0f, 0.0f, -35.0f };
 	Character->Rotation.y = 90.0f;
 	AnimModelComponent = Character->CreateAndAddComponent<ModelComponent>();
-	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
+	AnimModelComponent->Load3DModel((std::string(RESOURCES_DIR) + "/models/gltf/robot.glb").c_str());
 	AnimModelComponent->SetAnimation(6);
 	Character->AddComponent(AnimModelComponent);
 }
@@ -77,12 +77,12 @@ void Demo9c::Update(float DeltaTime)
 		}
 	}
 
-	__super::Update(DeltaTime);
+	Knight::Update(DeltaTime);
 }
 
 void Demo9c::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	Vector2 start, end;
 

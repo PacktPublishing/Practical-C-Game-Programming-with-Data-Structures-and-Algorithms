@@ -58,7 +58,7 @@ public:
 		const char* CubeMapPath = nullptr,
 		const char* EmissionMapPath = nullptr,
 		const char* OcclusionMapPath = nullptr,
-		Color Color = WHITE);
+		Color Color = {255, 255, 255, 255});
 
 	void LoadFromMesh(Mesh mesh, 
 		const char* DiffuseMapPath = nullptr,
@@ -70,7 +70,7 @@ public:
 		const char* CubeMapPath = nullptr,
 		const char* EmissionMapPath = nullptr,
 		const char* OcclusionMapPath = nullptr,
-		Color Color = WHITE);
+		Color Color = {255, 255, 255, 255});
 
 	void LoadMaterialTextures(int idx, 
 		const char* DiffuseMapPath = nullptr,

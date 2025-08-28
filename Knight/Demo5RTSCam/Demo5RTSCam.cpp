@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 void Demo5RTSCam::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -57,13 +57,13 @@ void Demo5RTSCam::Update(float ElapsedSeconds)
 		}
 	}
 
-	__super::Update(ElapsedSeconds);
+	Knight::Update(ElapsedSeconds);
 }
 
 //Render all units as cubes in the scene
 void Demo5RTSCam::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 
 	// Draw grid for better spatial reference
 	DrawGrid(20, 1.0f);
@@ -78,7 +78,7 @@ void Demo5RTSCam::DrawFrame()
 //Render help text and unit names of all units (represened by cubes)
 void Demo5RTSCam::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 
 	for (auto& unit : units) {		
 		BoundingRect rect = Get2DBoundingRectOfCube(unit.position, 1.0f, *RTSCamera->GetCamera3D());
@@ -96,6 +96,6 @@ void Demo5RTSCam::DrawGUI()
 // Load default resources for the demo
 void Demo5RTSCam::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	Knight::OnCreateDefaultResources();
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }

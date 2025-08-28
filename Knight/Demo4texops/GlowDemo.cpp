@@ -9,11 +9,11 @@ GlowDemo::GlowDemo()
 
 void GlowDemo::Create()
 {
-	Image art1 = LoadImage("../../resources/textures/mga1.png");
+	Image art1 = LoadImage((std::string(RESOURCES_DIR) + "/textures/mga1.png").c_str());
 	background = LoadTextureFromImage(art1);
 	UnloadImage(art1);
 
-	Image art2 = LoadImage("../../resources/textures/glow.png");
+	Image art2 = LoadImage((std::string(RESOURCES_DIR) + "/textures/glow.png").c_str());
 	glow = LoadTextureFromImage(art2);
 	UnloadImage(art2);
 

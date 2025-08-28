@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 void Demo7HMap::Start()
 {
 	//Initialize Knight Engine with a default scene and camera
-	__super::Start();
+	Knight::Start();
 
 	Config.ShowFPS = true;
 
@@ -32,7 +32,7 @@ void Demo7HMap::Start()
 	pTerrain->Scale = Vector3{ 1,1,1 };
 	HMapTerrainModelComponent* heightMap = pTerrain->CreateAndAddComponent<HMapTerrainModelComponent>();
 	Vector3 terrainDimension = Vector3{32,8,32};
-	bool success = heightMap->CreateFromFile(terrainDimension, Vector2{ 8,8 }, "../../resources/textures/heightmap.png", "../../resources/textures/terrain_map.png");
+	bool success = heightMap->CreateFromFile(terrainDimension, Vector2{ 8,8 }, (std::string(RESOURCES_DIR) + "/textures/heightmap.png").c_str(), (std::string(RESOURCES_DIR) + "/textures/terrain_map.png").c_str());
 
 	UnloadImage(image);             // Unload heightmap image from RAM, already uploaded to VRAM
 }
@@ -42,18 +42,18 @@ void Demo7HMap::EndGame()
 {
 	UnloadTexture(texture);     // Unload texture
 
-	__super::EndGame();
+	Knight::EndGame();
 }
 
 void Demo7HMap::DrawFrame()
 {
-	__super::DrawFrame();
+	Knight::DrawFrame();
 	DrawGrid(20, 1.0f);
 }
 
 void Demo7HMap::DrawGUI()
 {
-	__super::DrawGUI();
+	Knight::DrawGUI();
 	
 	DrawText("Use the mouse wheel to zoom camera.", 10, 50, 40, WHITE);
 }
@@ -61,6 +61,6 @@ void Demo7HMap::DrawGUI()
 
 void Demo7HMap::OnCreateDefaultResources()
 {
-	__super::OnCreateDefaultResources();
-	_Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+	Knight::OnCreateDefaultResources();
+	_Font = LoadFontEx((std::string(RESOURCES_DIR) + "/fonts/sparky.ttf").c_str(), 32, 0, 0);
 }
