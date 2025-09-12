@@ -1,3 +1,4 @@
+//This is the same ParticleComponent.cpp file from Chapter 07 sample project, slightly modified.
 #include "ParticleComponent.h"
 
 ParticleComponent::ParticleComponent()
@@ -24,6 +25,7 @@ bool ParticleComponent::CreateFromFile(const char* path, int maxp, Vector3 v, Co
 	return true;
 }
 
+//Animtae existing particles, remove dead ones, emit new ones
 void ParticleComponent::Update(float ElapsedSeconds, RenderHints* pRH)
 {
     if (currentDelayTime > 0.0f) {
@@ -44,6 +46,8 @@ void ParticleComponent::Update(float ElapsedSeconds, RenderHints* pRH)
         particle.life -= ElapsedSeconds;
         float lifeRatio = particle.life / particle.maxLife;
 
+        particle.scale = 1.0f;
+
         // Fade out as life decreases
         particle.color.a = static_cast<unsigned char>(255 * lifeRatio);
 		particle.color.r = static_cast<unsigned char>(initialColor.r * lifeRatio);
@@ -60,6 +64,7 @@ void ParticleComponent::Update(float ElapsedSeconds, RenderHints* pRH)
     EmitParticles(ElapsedSeconds);
 }
 
+// Draw all particles as billboards
 void ParticleComponent::Draw(RenderHints* pRH)
 {
     Camera3D *pCam = NULL;
@@ -69,21 +74,21 @@ void ParticleComponent::Draw(RenderHints* pRH)
 
     if (pCam != NULL) {
         for (const auto& particle : particles) {
-            float size = 1.0f; // Size of each particle
-            DrawBillboard(*pCam, texture, particle.position, size, particle.color);
+            Vector3 worldPos = Vector3Transform(particle.position, *_SceneActor->GetWorldTransformMatrix());
+            DrawBillboard(*pCam, texture, worldPos, particle.scale, particle.color);
         }
     }
 }
 
+// Emit new particles
 void ParticleComponent::EmitParticles(float deltaTime)
 {
     int particlesToEmit = 5; // Emit rate
 
-    Vector3 origin = Vector3Add(_SceneActor->Position, offset);
-
     for (int i = 0; i < particlesToEmit && particles.size() < maxParticles; i++) {
         Particle particle;
-        particle.position = origin;
+        particle.position = offset;
+        particle.scale = 1.0f;
 
         // Random velocity with some upward direction
         particle.velocity.x = (float(rand()) / RAND_MAX - 0.5f) * 2.0f;

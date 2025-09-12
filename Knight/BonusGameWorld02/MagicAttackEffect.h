@@ -9,6 +9,9 @@ class MagicAttackEffect : public ParticleComponent
 {
 public:
 	bool isEnabled = false;
+    Vector3 ForwardDirection = Vector3{ 0,0,1 };
+	float CurrentLifeTime = 1.0f; 
+	float MaxLifeTime = 1.0f; // Total lifetime of the effect in seconds
 
     MagicAttackEffect();
 

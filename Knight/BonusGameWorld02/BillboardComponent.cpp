@@ -17,9 +17,9 @@ BillboardComponent::BillboardComponent()
 /// <param name="EllapsedTime">Seconds since last called</param>
 /// <param name="pRH">The RenderHints, use to override default rendering settings</param>
 /// <remarks>The billboard is always facing the main camera. You can change this behaviour if needed.</remarks>
-void BillboardComponent::Update(float EllapsedTime, RenderHints* pRH)
+void BillboardComponent::Update(float ElapsedTime, RenderHints* pRH)
 {
-	__super::Update(EllapsedTime, pRH);
+	__super::Update(ElapsedTime, pRH);
 
 	SceneCamera* pSC = this->_SceneActor->GetMainCamera();
 
@@ -51,17 +51,13 @@ void BillboardComponent::Draw(RenderHints* pRH)
 		BeginBlendMode(blendingMode);
 		if (pRH != NULL && pRH->pOverrideShader != NULL) {
 			BeginShaderMode(*pRH->pOverrideShader);
-			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->Position, billUp, size, origin, 0, tint);
+			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->GetWorldPosition(), billUp, size, origin, 0, tint);
 			EndShaderMode();
 		}
 		else 
-			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->Position, billUp, size, origin, 0, tint);
+			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->GetWorldPosition(), billUp, size, origin, 0, tint);
 		EndBlendMode();
 	}
-}
-
-BillboardComponent::~BillboardComponent()
-{
 }
 
 //end of BillboardComponent.cpp

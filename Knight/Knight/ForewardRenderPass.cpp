@@ -8,14 +8,8 @@ bool ForwardRenderPass::Create(Scene* sc)
 
 	//default forward rendering pipeline use simple lighting model
 	LightShader = LoadShader("../../resources/shaders/glsl330/kn_lit.vs", "../../resources/shaders/glsl330/kn_lit.fs");
-	InitLightUniforms(LightShader);
-	alphaTestLoc = GetShaderLocation(LightShader, "alphaTest");
-
-	//Note: rlight of Raylib use a hardcoded value of 16.0f for shininess in the 
-	//this value should be overridden by the material, if not set, we provided a default value same as Raylib's rlight module 
-	SetShaderValue(LightShader, shinenessLoc, &pScene->DefaultShineness, SHADER_UNIFORM_FLOAT);
-	int alphaTestDefault = 0;
-	SetShaderValue(LightShader, alphaTestLoc, &alphaTestDefault, SHADER_UNIFORM_INT);
+	//initialize light uniform locations
+	InitRenderPassUniforms(LightShader);
 
 	Hints.pOverrideShader = &LightShader;
 
@@ -44,4 +38,4 @@ void ForwardRenderPass::EndScene()
 	pScene->_CurrentRenderPass = nullptr;
 }
 
-
+//End of ForwardRenderPass.cpp

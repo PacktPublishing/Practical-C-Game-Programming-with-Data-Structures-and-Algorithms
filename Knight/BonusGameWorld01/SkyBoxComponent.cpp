@@ -11,9 +11,8 @@ SkyboxComponent::SkyboxComponent()
 
 SkyboxComponent::~SkyboxComponent()
 {
-	//UnloadShader(skybox.materials[0].shader);
-	//UnloadTexture(skybox.materials[0].maps[MATERIAL_MAP_CUBEMAP].texture);
-	//UnloadModel(skybox);
+	UnloadShader(skybox.materials[0].shader);
+	UnloadTexture(skybox.materials[0].maps[MATERIAL_MAP_CUBEMAP].texture);
 }
 
 bool SkyboxComponent::CreateFromFile(const char* pSkyboxTexFilePath, CubemapLayout layout, float skyboxScale, bool useHdr)

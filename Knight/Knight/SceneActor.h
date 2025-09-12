@@ -25,10 +25,19 @@ public:
 	const Matrix* GetTranslationMatrix();
 	const Matrix* GetScaleMatrix();
 
-	const Matrix* GetWorldTransformMatrix();
+	const Matrix *GetWorldTransformMatrix();
 	Vector3 GetWorldPosition();
 	Quaternion GetWorldRotation();
 	Vector3 GetWorldScale();
+
+	//get forward vector in World space
+	Vector3 GetWorldForwardVector();
+
+
+	inline bool IsTopLevelActor()
+	{
+		return ((Parent == nullptr) || (Parent == _Scene->SceneRoot));
+	}
 
 	BoundingBox WorldBoundingBox; //in world space
 
@@ -49,4 +58,6 @@ protected:
 	Matrix _MatScale;
 	Matrix _MatTransform;
 	Matrix _MatWorldTransform;
+
+	Scene* _Scene;
 };

@@ -2,7 +2,7 @@
 
 #include "SceneRenderPass.h"
 
-class ForwardRenderPass : public SceneRenderPass
+class ForwardRenderPass : public LitRenderPass
 {
 	public:
 
@@ -14,5 +14,8 @@ class ForwardRenderPass : public SceneRenderPass
 
 		Shader LightShader = { 0 };
 
-        
+		//CPU-side shader data for lights of the scene
+		SceneLightShaderData _SceneLightData[NUM_MAX_LIGHTS] = { 0 };
 };
+
+//End of ForwardRenderPass.h

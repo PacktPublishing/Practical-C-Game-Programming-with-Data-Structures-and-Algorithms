@@ -111,13 +111,6 @@ extern void RecalculateSmoothNormals(const Model& model)
 				Vector3 edge2 = Vector3Subtract(v2, v0);
 				Vector3 faceNormal = Vector3Normalize(Vector3CrossProduct(edge1, edge2));
 
-				/* Accumulate normals for smoothing
-				for (auto idx : { idx0, idx1, idx2 }) {
-					mesh.normals[idx * 3] += faceNormal.x;
-					mesh.normals[idx * 3 + 1] += faceNormal.y;
-					mesh.normals[idx * 3 + 2] += faceNormal.z;
-				}*/
-
 				accumulatedNormals[v0] = Vector3Add(accumulatedNormals[v0], faceNormal);
 				accumulatedNormals[v1] = Vector3Add(accumulatedNormals[v1], faceNormal);
 				accumulatedNormals[v2] = Vector3Add(accumulatedNormals[v2], faceNormal);
@@ -165,18 +158,14 @@ struct Vertex {
     }
 };
 
+/// <summary>
+/// VertexHash - Custom hash function for Vertex struct
+/// </summary>
 struct VertexHash {
     size_t operator()(const Vertex& v) const {
         size_t hx = std::hash<float>()(v.position.x);
         size_t hy = std::hash<float>()(v.position.y);
         size_t hz = std::hash<float>()(v.position.z);
-        /*size_t nx = std::hash<float>()(v.normal.x);
-        size_t ny = std::hash<float>()(v.normal.y);
-        size_t nz = std::hash<float>()(v.normal.z);
-        size_t tx = std::hash<float>()(v.texcoord.x);
-        size_t ty = std::hash<float>()(v.texcoord.y);*/
-
-        //return hx ^ (hy << 1) ^ (hz << 2) ^ (nx << 3) ^ (ny << 4) ^ (nz << 5) ^ (tx << 6) ^ (ty << 7);
         return hx ^ (hy << 1) ^ (hz << 2);
     }
 };

@@ -12,7 +12,9 @@ typedef struct
 	int positionLoc;
 	int targetLoc;
 	int colorLoc;
-	int attenuationLoc;
+	int attnConstLoc;
+	int attnLinearLoc;
+	int attnQuadLoc;
 } SceneLightShaderData;
 
 class SceneRenderPass
@@ -31,27 +33,26 @@ class SceneRenderPass
 
 		RenderHints Hints = { 0 };
 
-		// _RenderOrder controls the order in which render passes are executed.
+		// _Priority controls the order in which render passes are executed.
 		int _Priority = 0;
 
-		//CPU-side shader data for lights of the scene
-		SceneLightShaderData _SceneLightData[NUM_MAX_LIGHTS] = {0};
-		int ambientLoc = -1;
-		int shinenessLoc = -1;
+		//CPU-side material shader unform data for all knight shaders
+
 		int alphaTestLoc = -1;
 
+		//The active camera used for this render pass,
+		//This can be the Scene's main camera or an override camera, light a light's camera for shadow map rendering
 		SceneCamera* pActiveCamera = nullptr;
 
+		//Number of components skipped due to frustum culling
 		int NumComponentsSkipped = 0;
 
 	protected:
 
 		Scene* pScene = nullptr;
 
-
-		//Get uniform location for scene light data
-		virtual void InitLightUniforms(const Shader &);
-		virtual void UpdateLightData(const Shader&);
+		//Get uniform location shader
+		virtual void InitRenderPassUniforms(const Shader&);
 
 		virtual void EnableAlphaTest(bool enable)
 		{

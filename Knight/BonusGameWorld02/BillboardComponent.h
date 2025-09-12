@@ -12,7 +12,6 @@ class BillboardComponent : public Component
 public:
 
 	BillboardComponent();
-	~BillboardComponent();
 
 	void Update(float EllapsedTime, RenderHints* pRH = nullptr) override;
 	void Draw(RenderHints *pRH = nullptr) override;

@@ -19,7 +19,8 @@ bool DepthRenderPass::Create(Scene* sc)
 	__super::Create(sc);
 
 	depthShader = LoadShader("../../resources/shaders/glsl330/kn-lit-depth.vs", "../../resources/shaders/glsl330/shadow_depth.fs");
-	alphaTestLoc = GetShaderLocation(depthShader, "alphaTest");
+
+	InitRenderPassUniforms(depthShader);
 
 	Hints.pOverrideShader = &depthShader;
 	Hints.pOverrideCamera = pLight;
@@ -37,9 +38,6 @@ bool DepthRenderPass::Create(Scene* sc)
 	//This improves shadow quality for the area that matters
 	lightCam->fovy = 50.0f;   
 	lightCam->up = Vector3{ 0.0f, 1.0f, 0.0f };
-
-	int alphaTestVal = 1;
-	SetShaderValue(depthShader, alphaTestLoc, &alphaTestVal, SHADER_UNIFORM_INT);
 
 	return true;
 }
@@ -59,6 +57,8 @@ void DepthRenderPass::Release()
 /// <param name="pOverrideCamera">You can pass a customized camera to override the active one in the DepthRenderPass</param>
 void DepthRenderPass::BeginScene(SceneCamera* pOverrideCamera)
 {
+	UpdateLightData(depthShader);
+
 	NumComponentsSkipped = 0;
 	pScene->_CurrentRenderPass = this;
 	if (Hints.pOverrideCamera != nullptr)
@@ -97,8 +97,6 @@ void DepthRenderPass::Render()
 		++opaque;
 	}
 
-	//rlDisableDepthMask();
-
 	//render alpha blend from back to front
 	multiset<RenderContext, CompareDistanceDescending>::iterator alpha = pScene->_RenderQueue.AlphaBlending.begin();
 	while (alpha != pScene->_RenderQueue.AlphaBlending.end())
@@ -108,8 +106,6 @@ void DepthRenderPass::Render()
 		EndBlendMode();
 		++alpha;
 	}
-
-	//rlDisableDepthTest();
 
 	//render overlay at last
 	vector<RenderContext>::iterator overlay = pScene->_RenderQueue.Overlay.begin();
@@ -121,8 +117,6 @@ void DepthRenderPass::Render()
 		++overlay;
 	}
 
-	//rlEnableDepthTest();
-	//rlEnableDepthMask();
 }
 
 /// <summary>
@@ -226,6 +220,24 @@ RenderTexture2D DepthRenderPass::LoadShadowmapRenderTexture(int width, int heigh
 		return { 0 };
 
 	return target;
+}
+
+
+void DepthRenderPass::InitRenderPassUniforms(const Shader& shader)
+{
+	__super::InitRenderPassUniforms(shader);
+}
+
+void DepthRenderPass::UpdateLightData(const Shader& shader)
+{
+	pScene->Lights[0].position = pLight->GetCamera3D()->position;
+	pScene->Lights[0].target = pLight->GetCamera3D()->target;
+	pScene->Lights[0].type = pLight->lightType;
+	pScene->Lights[0].color = pLight->lightColor;
+	pScene->Lights[0].enabled = true;
+	pScene->Lights[0].dirty = true;
+		
+	__super::UpdateLightData(shader);
 }
 
 //End of DepthRenderPass.cpp

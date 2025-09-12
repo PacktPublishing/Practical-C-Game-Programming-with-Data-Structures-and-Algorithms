@@ -30,11 +30,11 @@ void BillboardComponent::Draw(RenderHints* pRH)
 		BeginBlendMode(blendingMode);
 		if (pRH != NULL && pRH->pOverrideShader != NULL) {
 			BeginShaderMode(*pRH->pOverrideShader);
-			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->Position, billUp, size, origin, 0, tint);
+			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->GetWorldPosition(), billUp, size, origin, 0, tint);
 			EndShaderMode();
 		}
 		else 
-			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->Position, billUp, size, origin, 0, tint);
+			DrawBillboardPro(*pCam, texture, source, this->_SceneActor->GetWorldPosition(), billUp, size, origin, 0, tint);
 		EndBlendMode();
 	}
 }

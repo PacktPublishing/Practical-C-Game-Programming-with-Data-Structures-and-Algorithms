@@ -79,7 +79,7 @@ void ModelComponent::Update(float ElapsedSeconds, RenderHints* pRH)
 
 	if (_SceneActor)
 	{
-		_Model.transform = *(_SceneActor->GetWorldTransformMatrix());
+		_Model.transform = *_SceneActor->GetWorldTransformMatrix();
 	}
 
 	if ((_LoadState & Loaded_Animations) && 
@@ -263,7 +263,8 @@ void ModelComponent::Load3DModel(const char* ModelPath,
 	if (_Model.meshCount > 0)
 	{
 		UpdateMeshBoundingBoxes();
-		RecalculateSmoothNormals(_Model);
+		if (_AlwaysSmoothNormal)
+			RecalculateSmoothNormals(_Model);
 	}
 }
 

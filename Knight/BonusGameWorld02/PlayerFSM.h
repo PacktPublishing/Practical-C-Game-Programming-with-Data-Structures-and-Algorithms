@@ -1,7 +1,7 @@
 #pragma once
 
 #include "FSM.h"
-
+#include "MagicAttackEffect.h"
 
 class PlayerFSM : public FSM
 {
@@ -27,7 +27,7 @@ public:
 class PlayerAttackState : public FSMState
 {
 private:
-    float _Timer = 0.0f;
+	MagicAttackEffect* pAttackEffect = nullptr;
 public:
     void Enter(FSM* FiniteStateMachine) override;
     void Update(FSM* FiniteStateMachine, float DeltaTime) override;

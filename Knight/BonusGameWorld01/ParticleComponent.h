@@ -11,6 +11,7 @@ struct Particle {
     float life;      // Remaining life of the particle
     float maxLife;   // Total life duration of the particle
     Color color;     // Particle color
+	float scale;    // Particle scale
 };
 
 class ParticleComponent : public Component

@@ -15,6 +15,9 @@ bool ShadowMapRenderPass::Create(Scene *sc)
 	__super::Create(sc);
 
 	shadowShader = LoadShader("../../resources/shaders/glsl330/shadowmap.vs", "../../resources/shaders/glsl330/shadowmap-pcf.fs");
+
+	InitRenderPassUniforms(shadowShader);
+
 	lightDirLoc = GetShaderLocation(shadowShader, "lightDir");
 	lightColLoc = GetShaderLocation(shadowShader, "lightColor");
 	shadowShader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shadowShader, "viewPos");

@@ -52,7 +52,7 @@ void BonusGameWorld02::Start()
 	if (!_TerrainEntity->Create(_Scene))
 	{
 		TraceLog(LOG_ERROR, "<BonusGameWorld02.Start> Failed to create terrain entity!");
-		return;
+		exit(-1);
 	}
 
 	//Initialize a player entity, with finite state machine (FSM) for player control.
@@ -60,6 +60,7 @@ void BonusGameWorld02::Start()
 	if (!_PlayerEntity->Create(_Scene, _TerrainEntity))
 	{
 		TraceLog(LOG_ERROR, "<BonusGameWorld02.Start> Failed to create player entity!");
+		exit(-1);
 	}
 
 	//Initialize a prop entity, which is a static object with game-specific purpose in 
@@ -68,7 +69,8 @@ void BonusGameWorld02::Start()
 	PropEntity* propEntity = new PropEntity();
 	if (!propEntity->Create(_Scene, _TerrainEntity))
 	{
-		TraceLog(LOG_ERROR, "<BonusGameWorld02.Start> Failed to create prop entity!");		
+		TraceLog(LOG_ERROR, "<BonusGameWorld02.Start> Failed to create prop entity!");
+		exit(-1);
 	}
 
 	//Here we deliberately put terrain entity in the last element of the array.
@@ -222,11 +224,11 @@ void BonusGameWorld02::DrawOffscreen()
 void BonusGameWorld02::DrawFrame()
 {
 	double t = GetTime();
-	//Render the scene with PCF shadow mapping. See Chapter 7 for details.
+	//Render the scene with PCF shadow mapping. See Chapter 7 for details.	
 	pShadowMapRenderer->BeginScene();
 	pShadowMapRenderer->Render();
 	pShadowMapRenderer->EndScene();
-	_FrameRenderTime = float(GetTime() - t);
+	_FrameRenderTime = float(GetTime() - t);	
 }
 
 void BonusGameWorld02::DrawGUI()

@@ -53,6 +53,8 @@ bool LoDDepthRenderPass::OnAddToRender(Component* pSC, SceneObject* pSO)
 			pScene->_RenderQueue.Overlay.push_back(RenderContext{ pSC, dist2 });
 			break;
 	}
+
+	return true;
 }
 
 //End of LoDDepthRenderPass.cpp

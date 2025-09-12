@@ -159,60 +159,16 @@ void SceneRenderPass::BuildRenderQueue(SceneObject* pRoot)
 
 }
 
-/// <summary>
-/// InitLightUniforms - initialize the shader uniform locations for the lights in the scene.
-/// </summary>
-/// <param name="shader">The shader to setup the lighting uniforms</param>
-void SceneRenderPass::InitLightUniforms(const Shader& shader)
+void SceneRenderPass::InitRenderPassUniforms(const Shader& shader)
 {
-	for (int i = 0; i < NUM_MAX_LIGHTS; i++)
-	{
-		_SceneLightData[i].attenuationLoc = GetShaderLocation(shader, TextFormat("lights[%i].enabled", i));
-		_SceneLightData[i].colorLoc = GetShaderLocation(shader, TextFormat("lights[%i].color", i));
-		_SceneLightData[i].enabledLoc = GetShaderLocation(shader, TextFormat("lights[%i].enabled", i));
-		_SceneLightData[i].positionLoc = GetShaderLocation(shader, TextFormat("lights[%i].position", i));
-		_SceneLightData[i].targetLoc = GetShaderLocation(shader, TextFormat("lights[%i].target", i));
-		_SceneLightData[i].typeLoc = GetShaderLocation(shader, TextFormat("lights[%i].type", i));
+	alphaTestLoc = GetShaderLocation(shader, "alphaTest");
+
+	//If the shader has alphaTest uniform, enable alpha test by default
+	if (alphaTestLoc >= 0) {
+		int alphaTestDefault = 1;
+		SetShaderValue(shader, alphaTestLoc, &alphaTestDefault, SHADER_UNIFORM_INT);
 	}
-	ambientLoc = GetShaderLocation(shader, "ambient");
-	shinenessLoc = GetShaderLocation(shader, "materialShininess");
 }
 
-/// <summary>
-/// UpdateLightData - update the light data in the shader if any light is dirty (has changed since last update).
-/// </summary>
-/// <param name="shader"></param>
-void SceneRenderPass::UpdateLightData(const Shader& shader)
-{
-	for (int i = 0; i < NUM_MAX_LIGHTS; i++)
-	{
-		LightData* pLightData = &pScene->Lights[i];
-
-		if (pLightData->dirty != false)
-		{
-			SetShaderValue(shader, _SceneLightData[i].enabledLoc, &pLightData->enabled, SHADER_UNIFORM_INT);
-			if (!pLightData->enabled)
-			{
-				//if the light get disabled, there is no need to update the rest of the light data
-				continue;
-			}
-
-			//Update light data
-			SetShaderValue(shader, _SceneLightData[i].typeLoc, &pLightData->type, SHADER_UNIFORM_INT);
-			float position[3] = { pLightData->position.x, pLightData->position.y, pLightData->position.z };
-			SetShaderValue(shader, _SceneLightData[i].positionLoc, position, SHADER_UNIFORM_VEC3);
-			float target[3] = { pLightData->target.x, pLightData->target.y, pLightData->target.z };
-			SetShaderValue(shader, _SceneLightData[i].targetLoc, target, SHADER_UNIFORM_VEC3);
-			float color[4] = { (float)pLightData->color.r / (float)255, (float)pLightData->color.g / (float)255,
-							   (float)pLightData->color.b / (float)255, (float)pLightData->color.a / (float)255 };
-			SetShaderValue(shader, _SceneLightData[i].colorLoc, color, SHADER_UNIFORM_VEC4);
-
-			//remove dirty flag
-			pLightData->dirty = false;
-		}
-	}
-	// Update ambient light value
-	SetShaderValue(shader, ambientLoc, pScene->AmbientColor, SHADER_UNIFORM_VEC4);
-}
 
 //End of SceneRenderPass.cpp

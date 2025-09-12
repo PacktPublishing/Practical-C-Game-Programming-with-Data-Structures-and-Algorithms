@@ -4,7 +4,7 @@
 
 #include "ShadowSceneLight.h"
 
-class DepthRenderPass : public ForwardRenderPass
+class DepthRenderPass : public SceneRenderPass
 {
 public:
 

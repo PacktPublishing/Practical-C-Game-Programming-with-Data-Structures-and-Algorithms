@@ -1,3 +1,4 @@
+//Finite State Machine implementation for character states
 #include "FSM.h"
 #include "Knight.h"
 

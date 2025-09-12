@@ -1,3 +1,4 @@
+//TerrainEntity class implementation.
 #include <random>
 
 #include "BonusGameWorld01.h"
@@ -63,7 +64,7 @@ bool TerrainEntity::Create(Scene* pScene, Entity* pContainer)
 		imposters.push_back(imposter);
 	}
 
-	for (int i = 0; i < 20; i++) {
+	for(int i = 0; i < 20; i++) {
 		// Set up particle system
 		SceneActor* pParticleActor = pScene->CreateSceneObject<SceneActor>(TextFormat("Particle%d", i));
 		pParticleActor->Position = Vector3{ randomTerrainRange(gen),0, randomTerrainRange(gen) };
@@ -153,6 +154,7 @@ void TerrainEntity::Update(float ElapsedSeconds)
 
 	float t = timeDiff;
 
+	pSkybox->_SkyColor = WHITE;
 	pSkybox->_SkyColor.r = (unsigned char)((1 - t) * c1.r + t * c2.r);
 	pSkybox->_SkyColor.g = (unsigned char)((1 - t) * c1.g + t * c2.g);
 	pSkybox->_SkyColor.b = (unsigned char)((1 - t) * c1.b + t * c2.b);

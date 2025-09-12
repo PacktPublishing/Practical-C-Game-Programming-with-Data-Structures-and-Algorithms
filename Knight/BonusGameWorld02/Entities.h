@@ -17,6 +17,9 @@ public:
 	SceneActor* _Actor = nullptr;
 };
 
+/// <summary>
+/// TerrainEntity - handle terrain rendering and terrain-related logic, including day/night cycle
+/// </summary>
 class TerrainEntity : public Entity
 {
 public:
@@ -36,6 +39,9 @@ protected:
 	float timeDiff = 0.0f;
 };
 
+/// <summary>
+/// PlayerEntity - handle game-play logic of player character
+/// </summary>
 class PlayerEntity : public Entity
 {
 public:
@@ -47,12 +53,17 @@ public:
 
 	PlayerFSM* PlayerCharacterFSM = nullptr;
 
+	SceneActor* pFireballActor = nullptr;
+
 	MagicAttackEffect* pAttackEffect = nullptr;
 
 protected:
 	TerrainEntity* pTerrainEntity = nullptr;
 };
 
+/// <summary>
+/// PropEntity - handle static objects in the game world, e.g. buildings, etc.
+/// </summary>
 class PropEntity : public Entity
 {
 public:

@@ -122,19 +122,21 @@ void PlayerWalkState::Update(FSM* FiniteStateMachine, float DeltaTime)
 
 void PlayerAttackState::Enter(FSM* FiniteStateMachine)
 {
-    _Timer = 0.5f;
     FiniteStateMachine->GetAnimController()->TransitionAnimation(FSM::ATTACK);
-    FiniteStateMachine->GetCharacter()->GetComponent<MagicAttackEffect>()->Reset();
+
+	pAttackEffect = FiniteStateMachine->GetCharacter()->_Children[0]->GetComponent<MagicAttackEffect>();
+	pAttackEffect->MaxLifeTime = 1.0f;
+	pAttackEffect->GetSceneActor()->Position = Vector3{0.0f, 3.0f, 0.0f};
+    pAttackEffect->Reset();
 }
 
 void PlayerAttackState::Update(FSM* FiniteStateMachine, float DeltaTime)
 {
-    _Timer -= DeltaTime;
-        
-    if (_Timer <= 0.0f)
+	//move fireball forward        
+    if (!pAttackEffect->isEnabled)
     {
-        FiniteStateMachine->GetCharacter()->GetComponent<MagicAttackEffect>()->isEnabled = false;
         FiniteStateMachine->SetState(PlayerFSM::IDLE);
+		pAttackEffect = nullptr;
     }
 }
 

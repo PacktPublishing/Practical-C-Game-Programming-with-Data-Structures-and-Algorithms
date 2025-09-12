@@ -16,6 +16,7 @@
 #include "CylinderComponent.h"
 #include "ConeComponent.h"
 #include "SceneRenderPass.h"
+#include "LitRenderPass.h"
 #include "ForwardRenderPass.h"
 #include "LitDepthRenderPass.h"
 #include "LitShadowRenderPass.h"
@@ -52,7 +53,6 @@ public:
 	void DrawText(const char* text, int x, int y, int size, const Color& color = Color{ 255,255,255,255 });
 	void SaveScreenshot(const char* fileName);
 
-	//bool ShowFPS = false;
 	KnightConfig Config;
 
 	static Knight* Instance;

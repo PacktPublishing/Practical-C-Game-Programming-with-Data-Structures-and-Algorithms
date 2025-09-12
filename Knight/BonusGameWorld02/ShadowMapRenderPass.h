@@ -4,7 +4,7 @@
 
 #include "ShadowSceneLight.h"
 
-class ShadowMapRenderPass : public ForwardRenderPass
+class ShadowMapRenderPass : public LitRenderPass
 {
 	public:
 
@@ -32,4 +32,8 @@ class ShadowMapRenderPass : public ForwardRenderPass
 		int lightVPLoc = -1;
 		int shadowMapLoc = -1;
 		int receiveShadowLoc = -1;
+
+	protected:
+		void InitRenderPassUniforms(const Shader&) override;
+		void UpdateLightData(const Shader&) override;
 };

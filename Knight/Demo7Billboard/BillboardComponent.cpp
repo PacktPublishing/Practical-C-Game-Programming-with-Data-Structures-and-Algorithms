@@ -26,11 +26,11 @@ void BillboardComponent::Draw(RenderHints* pRH)
 		if (pRH != NULL && pRH->pOverrideShader != NULL) {
 			int oldid = rlGetShaderIdDefault();
 			rlEnableShader(pRH->pOverrideShader->id);
-			DrawBillboardPro(*pSC->GetCamera3D(), texture, source, this->_SceneActor->Position, billUp, size, origin, 0, tint);
+			DrawBillboardPro(*pSC->GetCamera3D(), texture, source, this->_SceneActor->GetWorldPosition(), billUp, size, origin, 0, tint);
 			rlEnableShader(oldid);
 		}
 		else
-			DrawBillboardPro(*pSC->GetCamera3D(), texture, source, this->_SceneActor->Position, billUp, size, origin, 0, tint);
+			DrawBillboardPro(*pSC->GetCamera3D(), texture, source, this->_SceneActor->GetWorldPosition(), billUp, size, origin, 0, tint);
 	}
 }
 

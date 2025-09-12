@@ -13,6 +13,7 @@ SceneActor::SceneActor(Scene* Scene, const char* Name)
 	, _MatTransform(MatrixIdentity())
 	, _MatWorldTransform(MatrixIdentity())
 	, WorldBoundingBox(BoundingBox{ 0 })
+	,_Scene(Scene)
 {
 }
 
@@ -205,5 +206,13 @@ void SceneActor::DrawBoundingBox(Color c)
 	(WorldBoundingBox.max.z - WorldBoundingBox.min.z)};
 	DrawCubeWires(pos, size.x, size.y, size.z, c);
 }
+
+Vector3 SceneActor::GetWorldForwardVector()
+{
+	// Z axis of the world transform
+	Vector3 forward = { -_MatWorldTransform.m8, -_MatWorldTransform.m9, -_MatWorldTransform.m10 };
+	return Vector3Normalize(forward);
+}
+
 
 

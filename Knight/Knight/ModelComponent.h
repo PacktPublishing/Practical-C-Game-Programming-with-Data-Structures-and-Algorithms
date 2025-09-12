@@ -116,6 +116,8 @@ public:
 	ModelAnimation* _Animations = nullptr;
 	int _AnimationsCount;
 
+	bool _AlwaysSmoothNormal = true; // If true, recalculate smooth vertex normals for the model
+
 protected:
 	unsigned char _LoadState;
 

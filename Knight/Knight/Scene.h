@@ -17,7 +17,9 @@ typedef struct {
 	Vector3 position;
 	Vector3 target;
 	Color color;
-	float attenuation;
+	float attn_const;
+	float attn_linear;
+	float attn_quad;
 	bool dirty;
 } LightData;
 

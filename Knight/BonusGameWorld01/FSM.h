@@ -1,3 +1,4 @@
+//Header file to implement Finite State Machine for character animations
 #pragma once
 
 class SceneActor;

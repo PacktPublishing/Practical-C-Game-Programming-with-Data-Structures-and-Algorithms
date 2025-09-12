@@ -3,6 +3,8 @@
 #include "raylib.h"
 
 class SceneCamera;
+class SceneActor;
+class SceneObject;
 
 typedef struct _RenderHints {
 
@@ -83,6 +85,9 @@ public:
 
 	virtual void Update(float ElapsedSeconds, RenderHints* pRH = nullptr) {}
 	virtual void Draw(RenderHints *pRH = nullptr) {}
+
+	SceneActor* GetSceneActor() { return _SceneActor; }
+	SceneObject* GetSceneObject() { return _SceneObject; }
 
 protected:
 	friend class SceneObject;

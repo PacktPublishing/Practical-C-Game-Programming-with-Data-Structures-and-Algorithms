@@ -31,7 +31,6 @@ bool TerrainEntity::Create(Scene* pScene, Entity* pContainer)
 	uniform_real_distribution<float> randomSizeRange(4.0f, 8.0f);
 
 	//create billboard imposters on the terrain
-
 	for (int i = 0; i < 600; i++)
 	{
 		//imposter (billboard)
@@ -64,7 +63,7 @@ bool TerrainEntity::Create(Scene* pScene, Entity* pContainer)
 		imposters.push_back(imposter);
 	}
 
-	for (int i = 0; i < 20; i++) {
+	for(int i = 0; i < 20; i++) {
 		// Set up particle system
 		SceneActor* pParticleActor = pScene->CreateSceneObject<SceneActor>(TextFormat("Particle%d", i));
 		pParticleActor->Position = Vector3{ randomTerrainRange(gen),0, randomTerrainRange(gen) };

@@ -4,6 +4,11 @@
 
 #include "ShadowMapRenderPass.h"
 
+/// <summary>
+/// ShadowMapRenderPass - constructor
+/// </summary>
+/// <param name="l">The shadow scene light</param>
+/// <param name="id">The Texture id of depth render to texture.</param>
 ShadowMapRenderPass::ShadowMapRenderPass(ShadowSceneLight* l, int id)
 {
 	pLight = l;
@@ -19,14 +24,8 @@ bool ShadowMapRenderPass::Create(Scene *sc)
 {
 	__super::Create(sc);
 
-	shadowShader = LoadShader("../../resources/shaders/glsl330/shadowmap.vs", "../../resources/shaders/glsl330/kn-lit-sm-pcf.fs");
-	lightDirLoc = GetShaderLocation(shadowShader, "lightDir");
-	lightColLoc = GetShaderLocation(shadowShader, "lightColor");
-	shadowShader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shadowShader, "viewPos");
-	ambientLoc = GetShaderLocation(shadowShader, "ambient");
-	lightVPLoc = GetShaderLocation(shadowShader, "lightVP");
-	shadowMapLoc = GetShaderLocation(shadowShader, "shadowMap");
-	receiveShadowLoc = GetShaderLocation(shadowShader, "receiveShadow");
+	shadowShader = LoadShader("../../resources/shaders/glsl330/shadowmap.vs", "../../resources/shaders/glsl330/kn-lit4-sm-pcf.fs");
+	InitRenderPassUniforms(shadowShader);
 
 	Hints.pOverrideShader = &shadowShader;
 
@@ -98,6 +97,8 @@ bool ShadowMapRenderPass::OnAddToRender(Component* pSC, SceneObject* pSO)
 /// <param name="pOverrideCamera">Customzied SceneCamera to render shadow, if any.</param>
 void ShadowMapRenderPass::BeginScene(SceneCamera* pOverrideCamera)
 {
+	UpdateLightData(shadowShader);
+
 	NumComponentsSkipped = 0;
 	pScene->_CurrentRenderPass = this;
 
@@ -119,7 +120,7 @@ void ShadowMapRenderPass::BeginScene(SceneCamera* pOverrideCamera)
 	//update lighting changes (if any)
 	Vector4 lightColorNormalized = ColorNormalize(pLight->lightColor);
 	Vector4 ambientColorNormalized = ColorNormalize(pLight->lightAmbient);
-	SetShaderValue(shadowShader, lightColLoc, &lightColorNormalized, SHADER_UNIFORM_VEC4);
+	//SetShaderValue(shadowShader, lightColLoc, &lightColorNormalized, SHADER_UNIFORM_VEC4);
 	SetShaderValue(shadowShader, ambientLoc, &ambientColorNormalized, SHADER_UNIFORM_VEC4);
 }
 
@@ -179,6 +180,39 @@ void ShadowMapRenderPass::Render()
 		overlay->pComponent->Draw(&Hints);
 		++overlay;
 	}	
+}
+
+/// <summary>
+/// InitRenderPassUniforms - Override function to initialize the shader uniforms
+/// </summary>
+/// <param name="shader">The shader to communicate with this unforms</param>
+void ShadowMapRenderPass::InitRenderPassUniforms(const Shader& shader)
+{
+	__super::InitRenderPassUniforms(shader);
+
+	lightDirLoc = GetShaderLocation(shadowShader, "lightDir");
+	lightColLoc = GetShaderLocation(shadowShader, "lightColor");
+	shadowShader.locs[SHADER_LOC_VECTOR_VIEW] = GetShaderLocation(shadowShader, "viewPos");
+	ambientLoc = GetShaderLocation(shadowShader, "ambient");
+	lightVPLoc = GetShaderLocation(shadowShader, "lightVP");
+	shadowMapLoc = GetShaderLocation(shadowShader, "shadowMap");
+	receiveShadowLoc = GetShaderLocation(shadowShader, "receiveShadow");
+}
+
+/// <summary>
+/// UpdateLightData - Overrided function to take primary lighting data from ShadowSceneLight, and leave other light alone.
+/// </summary>
+/// <param name="shader">The shader to handle lighting</param>
+void ShadowMapRenderPass::UpdateLightData(const Shader& shader)
+{
+	pScene->Lights[0].position = pLight->GetCamera3D()->position;
+	pScene->Lights[0].target = pLight->GetCamera3D()->target;
+	pScene->Lights[0].type = pLight->lightType;
+	pScene->Lights[0].color = pLight->lightColor;
+	pScene->Lights[0].enabled = true;
+ 	pScene->Lights[0].dirty = true;
+
+	__super::UpdateLightData(shader);
 }
 
 //End of ShadowMapRenderPass.cpp
