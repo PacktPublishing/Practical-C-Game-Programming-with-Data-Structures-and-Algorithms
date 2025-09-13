@@ -19,6 +19,20 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 </p>
 
 <details open> 
+  <summary><h2>September 2025 update - new sample and three mini sample cookbooks!</summary>
+<p>
+  We've released a new lighting sample that demonstrates how to recalculate vertex normals for a smooth lighting effect. We've also included three new mini-cookbooks that explain the logic behind the code in detail.    
+ </p>    
+<ul>
+  <li>A new <i>DemoVertexNormal</i> sample project demonstrates how to recalculate the vertex normal to produce a smoother lighting effect. A 10-page mini e-booklet <b>Demo6VertexNormal_MiniCookBook.pdf</b> is provided under <i>BonusFreeBooklets/SampleMiniCookbooks/</i> folder to explain how the algorithm works.</li>
+  <li>A new e-booklet <b>BonusGameWorld01_MiniCookBook.pdf</b> under BonusFreeBooklets/SampleMiniCookbooks/ folder explains the details of the sample project <i>BonusGameWorld01</i>.</li>
+  <li>A new e-booklet <b>BonusGameWorld02_MiniCookBook.pdf</b> under BonusFreeBooklets/SampleMiniCookbooks/ folder explains how we optimize <i>BonusGameWorld02</i> by using camera culling and distance-based detail.</li>
+  <li><i>BonusGameWorld02</i> now supports up to four lights. The first light is a primary directional light source, perfect for casting shadows from the sun, moon, or a major indoor light. The second light serves as a focused spotlight, ensuring the main player character is always visible, even in dark surroundings. The third and fourth lights are dynamic, used for creating engaging visual effects, like a fireball casting a warm glow on nearby trees and the ground. Yet it runs around 10 fps faster than the original <i>BonusGameWorld01</i> project.</li>
+  <li>Other minor bug fixes.</li>
+</ul>
+</details>
+
+<details open> 
   <summary><h2>User Contributed CMake build system support</summary>
 <p>
   We would like to express our gratitude to <b><i>DonizeteVida</i></b> and <b><i>ramonmeza</i></b> for their efforts in enabling sample projects supporting the CMake build system for MacOS and Linux users.  
