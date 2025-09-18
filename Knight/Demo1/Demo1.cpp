@@ -82,7 +82,6 @@ void Demo1::Start()
 	ModelComponent* animModelComponent = characterActor->CreateAndAddComponent<ModelComponent>();
 	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animModelComponent->SetAnimation(10);
-	characterActor->AddComponent(animModelComponent);
 }
 
 void Demo1::EndGame()

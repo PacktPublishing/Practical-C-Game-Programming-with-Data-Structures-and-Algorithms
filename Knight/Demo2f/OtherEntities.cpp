@@ -23,7 +23,6 @@ void TerrainEntity::Create(Scene* pScene, Entity* pParent)
 	Texture2D tex = LoadTextureFromImage(image);
 	UnloadImage(image);
 	animEnemyComponent->GetModel()->materials[0].maps[0].texture = tex;
-	Actor->AddComponent(animEnemyComponent);
 }
 
 void Entity::DrawGUI()

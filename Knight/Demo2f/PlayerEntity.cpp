@@ -16,7 +16,6 @@ void PlayerEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	Actor->AddComponent(animPlayerComponent);
 }
 
 void PlayerEntity::Update(float elaspedTime)

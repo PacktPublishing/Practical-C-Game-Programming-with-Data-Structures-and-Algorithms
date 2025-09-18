@@ -63,7 +63,6 @@ void Demo6NormalMap::Start()
 		animModelComponent->GetModel()->materials[i].maps[MATERIAL_MAP_DIFFUSE].texture = diffuse;
 		animModelComponent->GetModel()->materials[i].maps[MATERIAL_MAP_NORMAL].texture = normalMap;
 	}
-	characterActor->AddComponent(animModelComponent);
 	for (int i = 0; i < animModelComponent->GetModel()->meshCount; i++) {
 		GenMeshTangents(&animModelComponent->GetModel()->meshes[i]);
 	}

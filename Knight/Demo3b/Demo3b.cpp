@@ -73,7 +73,6 @@ void Demo3b::Start()
 	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb",
 		nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, RED);
 	animModelComponent->SetAnimation(10);
-	Character1->AddComponent(animModelComponent);
 
 	Character2 = _Scene->CreateSceneObject<SceneActor>("Character");
 	Character2->Scale = Vector3{ 3.0f, 3.0f, 3.0f };
@@ -82,7 +81,6 @@ void Demo3b::Start()
 	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb",
 		nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, YELLOW);
 	animModelComponent->SetAnimation(10);
-	Character2->AddComponent(animModelComponent);
 
 	PlaceCharacters();
 }

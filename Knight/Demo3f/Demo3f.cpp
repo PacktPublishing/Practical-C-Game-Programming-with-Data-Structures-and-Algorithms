@@ -36,7 +36,6 @@ void Demo3f::Start()
 	ModelComponent* animModelComponent = Character->CreateAndAddComponent<ModelComponent>();
 	animModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animModelComponent->SetAnimation(2);
-	Character->AddComponent(animModelComponent);
 }
 
 void Demo3f::Update(float ElapsedSeconds)

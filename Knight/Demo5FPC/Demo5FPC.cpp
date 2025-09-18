@@ -30,7 +30,6 @@ void Demo5FPC::Start()
 	Mesh floorMesh = GenMeshCube(32.0f, 0.1f, 32.0f);
 	ModelComponent* floorComponent = pFloor->CreateAndAddComponent<ModelComponent>();
 	floorComponent->LoadFromMesh(floorMesh, "../../resources/textures/p8.png");
-	pFloor->AddComponent(floorComponent);
 
 	SceneActor* pWall1 = _Scene->CreateSceneObject<SceneActor>("Wall01");
 	pWall1->Position = Vector3{ 16.0f, 0.0f, 0.0f };
@@ -38,7 +37,6 @@ void Demo5FPC::Start()
 	Mesh wall1Mesh = GenMeshCube(32.0f, 8.0f, 1.0f);
 	ModelComponent* wall1Component = pWall1->CreateAndAddComponent<ModelComponent>();
 	wall1Component->LoadFromMesh(wall1Mesh, "../../resources/textures/stonewall.png");
-	pWall1->AddComponent(wall1Component);
 
 	SceneActor* pWall2 = _Scene->CreateSceneObject<SceneActor>("Wall02");
 	pWall2->Position = Vector3{ -16.0f, 0.0f, 0.0f };
@@ -46,7 +44,6 @@ void Demo5FPC::Start()
 	Mesh wall2Mesh = GenMeshCube(32.0f, 8.0f, 1.0f);
 	ModelComponent* wall2Component = pWall2->CreateAndAddComponent<ModelComponent>();
 	wall2Component->LoadFromMesh(wall2Mesh, "../../resources/textures/stonewall.png");
-	pWall2->AddComponent(wall2Component);
 
 	SceneActor* pWall3 = _Scene->CreateSceneObject<SceneActor>("Wall03");
 	pWall3->Position = Vector3{ 0.0f, 0.0f, 16.0f };
@@ -54,7 +51,6 @@ void Demo5FPC::Start()
 	Mesh wall3Mesh = GenMeshCube(32.0f, 8.0f, 1.0f);
 	ModelComponent* wall3Component = pWall3->CreateAndAddComponent<ModelComponent>();
 	wall3Component->LoadFromMesh(wall3Mesh, "../../resources/textures/stonewall.png");
-	pWall3->AddComponent(wall3Component);
 
 	SceneActor* pWall4 = _Scene->CreateSceneObject<SceneActor>("Wall04");
 	pWall4->Position = Vector3{ 0.0f, 0.0f, -16.0f };
@@ -62,20 +58,17 @@ void Demo5FPC::Start()
 	Mesh wall4Mesh = GenMeshCube(32.0f, 8.0f, 1.0f);
 	ModelComponent* wall4Component = pWall4->CreateAndAddComponent<ModelComponent>();
 	wall4Component->LoadFromMesh(wall4Mesh, "../../resources/textures/stonewall.png");
-	pWall4->AddComponent(wall4Component);
 
 	//create some props in the scene
 	SceneActor* pProp1 = _Scene->CreateSceneObject<SceneActor>("scene prop1");
 	pProp1->Position = Vector3{ -12, 0, 12 };
 	ModelComponent* prop1Component = pProp1->CreateAndAddComponent<ModelComponent>();
 	prop1Component->Load3DModel("../../resources/models/obj/well.obj", "../../resources/models/obj/well_diffuse.png");
-	pProp1->AddComponent(prop1Component);
 
 	SceneActor* pProp2 = _Scene->CreateSceneObject<SceneActor>("scene prop2");
 	pProp2->Position = Vector3{ 0, 0, -11 };
 	ModelComponent* prop2Component = pProp2->CreateAndAddComponent<ModelComponent>();
 	prop2Component->Load3DModel("../../resources/models/obj/market.obj", "../../resources/models/obj/market_diffuse.png");
-	pProp2->AddComponent(prop2Component);
 
 	DisableCursor();
 }

@@ -43,7 +43,6 @@ void Demo9c::Start()
 	AnimModelComponent = Character->CreateAndAddComponent<ModelComponent>();
 	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	AnimModelComponent->SetAnimation(6);
-	Character->AddComponent(AnimModelComponent);
 }
 
 void Demo9c::Update(float DeltaTime)

@@ -43,7 +43,6 @@ void Demo10::Start()
 	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	AnimModelComponent->SetAnimationMode(ModelComponent::Linear_interpolation);
 	AnimModelComponent->SetTransitionMode(ModelComponent::Linear);
-	Player->AddComponent(AnimModelComponent);
 	PlayerCharacterFSM = new PlayerFSM(Player, AnimModelComponent);
 
 	SceneActor* turret = _Scene->CreateSceneObject<SceneActor>("Turret");

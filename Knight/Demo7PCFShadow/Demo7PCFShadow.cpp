@@ -29,7 +29,6 @@ void Demo7PCFShadow::Start()
 	Mesh floorMesh = GenMeshCube(32.0f, 0.1f, 32.0f);
 	ModelComponent* floorComponent = pFloor->CreateAndAddComponent<ModelComponent>();
 	floorComponent->LoadFromMesh(floorMesh, "../../resources/textures/p8.png");
-	pFloor->AddComponent(floorComponent);
 	
 	pProp = _Scene->CreateSceneObject<SceneActor>("Prop");
 	pProp->Scale = Vector3{ 0.1f, 0.1f, 0.1f };
@@ -40,7 +39,6 @@ void Demo7PCFShadow::Start()
 	propModelComponent->Load3DModel("../../resources/models/obj/plane.obj", "../../resources/models/obj/plane_diffuse.png");
 	propModelComponent->castShadow = Component::eShadowCastingType::Shadow;
 	propModelComponent->receiveShadow = true;
-	pProp->AddComponent(propModelComponent);
 	
 	//Place player
 	Actor = _Scene->CreateSceneObject<SceneActor>("Player");

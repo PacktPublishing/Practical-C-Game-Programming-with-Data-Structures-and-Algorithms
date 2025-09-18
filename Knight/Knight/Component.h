@@ -83,6 +83,7 @@ public:
 	virtual ~Component() {};
 	eComponentType Type;
 
+	virtual bool Create() { return true; }
 	virtual void Update(float ElapsedSeconds, RenderHints* pRH = nullptr) {}
 	virtual void Draw(RenderHints *pRH = nullptr) {}
 

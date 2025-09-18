@@ -48,7 +48,6 @@ void Demo9b::Start()
 	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	AnimModelComponent->SetAnimationMode(ModelComponent::Linear_interpolation);
 	AnimModelComponent->SetTransitionMode(ModelComponent::Linear);
-	Player->AddComponent(AnimModelComponent);
 	PlayerCharacterFSM = new PlayerFSM(Player, AnimModelComponent);
 
 	Enemy = _Scene->CreateSceneObject<SceneActor>("Enemy");
@@ -59,7 +58,6 @@ void Demo9b::Start()
 		nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, RED);
 	EnemyAnimModelComponent->SetAnimationMode(ModelComponent::Linear_interpolation);
 	EnemyAnimModelComponent->SetTransitionMode(ModelComponent::Linear);
-	Enemy->AddComponent(EnemyAnimModelComponent);
 	EnemyCharacterFSM = new EnemyFSM(Enemy, EnemyAnimModelComponent);
 	EnemyBT = new BehaviourTree(Enemy, EnemyCharacterFSM, Player);
 }

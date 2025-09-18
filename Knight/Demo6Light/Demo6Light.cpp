@@ -58,7 +58,6 @@ void Demo6Light::Start()
 	ModelComponent* animPlayerComponent = actor->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	actor->AddComponent(animPlayerComponent);
 	for (int i = 0; i < animPlayerComponent->GetModel()->materialCount; i++) {
 		animPlayerComponent->GetModel()->materials[i].shader = shader;
 	}
@@ -73,7 +72,6 @@ void Demo6Light::Start()
 	UnloadImage(image);
 	animEnemyComponent->GetModel()->materials[0].maps[0].texture = tex;
 	animEnemyComponent->GetModel()->materials[0].shader = shader;
-	pTerrain->AddComponent(animEnemyComponent);
 }
 
 //Process user input to move SceneActor and toggle lights

@@ -25,7 +25,6 @@ void PlayerEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	Actor->AddComponent(animPlayerComponent);
 }
 
 //Constructor for EnemyEntity
@@ -46,7 +45,6 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
 	animEnemyComponent->SetAnimation(0);
-	Actor->AddComponent(animEnemyComponent);
 }
 
 //Update method for EnemyEntity, handles respawn countdown
@@ -91,5 +89,4 @@ void TerrainEntity::Create(Scene* pScene, Entity* pParent)
 	Texture2D tex = LoadTextureFromImage(image);
 	UnloadImage(image);
 	animEnemyComponent->GetModel()->materials[0].maps[0].texture = tex;
-	Actor->AddComponent(animEnemyComponent);
 }

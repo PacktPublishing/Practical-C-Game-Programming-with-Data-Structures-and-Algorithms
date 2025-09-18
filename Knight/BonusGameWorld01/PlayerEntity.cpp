@@ -24,7 +24,6 @@ bool PlayerEntity::Create(Scene* pScene, Entity *pTerrain)
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimationMode(ModelComponent::eAnimMode::Linear_interpolation);
 	animPlayerComponent->SetAnimation(6);
-	_Actor->AddComponent(animPlayerComponent);
 
 	//Initialize player FSM
 	PlayerCharacterFSM = new PlayerFSM(_Actor, animPlayerComponent);

@@ -20,7 +20,6 @@ void PlayerEntity::Create(Scene * pScene, Entity* pParent)
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	Actor->AddComponent(animPlayerComponent);
 }
 
 //Create an Enemy entity with its SceneActor
@@ -33,7 +32,6 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
 	animEnemyComponent->SetAnimation(0);
-	Actor->AddComponent(animEnemyComponent);
 }
 
 //Create a Prop entity with its SceneActor
@@ -47,7 +45,6 @@ void PropEntity::Create(Scene* pScene, Entity *pParent)
 	Actor->Scale = Vector3{ 0.2f, 5.0f, 0.2f };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/obj/well.obj", "../../resources/models/obj/well_diffuse.png");
-	Actor->AddComponent(animEnemyComponent);
 }
 
 //Create a Terrain entity with its SceneActor
@@ -60,5 +57,4 @@ void TerrainEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Scale = Vector3{ 20, 1, 20 };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj", "../../resources/models/obj/bridge_diffuse.png");
-	Actor->AddComponent(animEnemyComponent);
 }

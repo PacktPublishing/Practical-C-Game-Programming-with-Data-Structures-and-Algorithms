@@ -27,7 +27,6 @@ void PlayerEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	Actor->AddComponent(animPlayerComponent);
 }
 
 //Constructor of EnemyEntity, set respawnInterval to -1.0f when it's alive (HP>0).
@@ -48,7 +47,6 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
 	animEnemyComponent->SetAnimation(0);
-	Actor->AddComponent(animEnemyComponent);
 }
 
 //Process gameplay logic of EnemyEntity.
@@ -90,5 +88,4 @@ void TerrainEntity::Create(Scene* pScene, Entity* pParent)
 	Actor->Scale = Vector3{ 20, 1, 20 };
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj", "../../resources/models/obj/bridge_diffuse.png");
-	Actor->AddComponent(animEnemyComponent);
 }

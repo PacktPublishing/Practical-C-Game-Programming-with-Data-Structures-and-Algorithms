@@ -31,7 +31,6 @@ void Demo5TrkCam::Start()
 	ModelComponent* animPlayerComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	Actor->AddComponent(animPlayerComponent);
 
 	OnRailCamera->SetUp(Actor, 45.0f, CAMERA_PERSPECTIVE);
 

@@ -42,7 +42,6 @@ void Demo6LightShader::Start()
 	ModelComponent* animPlayerComponent = pPlayer->CreateAndAddComponent<ModelComponent>();
 	animPlayerComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	animPlayerComponent->SetAnimation(6);
-	pPlayer->AddComponent(animPlayerComponent);	
 }
 
 // Update player position and light position based on input

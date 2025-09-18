@@ -14,7 +14,6 @@ void EnemyEntity::Create(Scene* pScene, Entity* pParent)
 	ModelComponent* animEnemyComponent = Actor->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/gltf/greenman.glb");
 	animEnemyComponent->SetAnimation(0);
-	Actor->AddComponent(animEnemyComponent);
 }
 
 void EnemyEntity::Update(float elaspedTime)

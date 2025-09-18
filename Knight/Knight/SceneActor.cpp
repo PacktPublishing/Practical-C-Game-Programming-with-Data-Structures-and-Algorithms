@@ -19,11 +19,22 @@ SceneActor::SceneActor(Scene* Scene, const char* Name)
 
 bool SceneActor::AddComponent(Component* Component)
 {
+	//sanity check
+	if (HasComponent(Component->Type))
+	{
+		//each SceneActor can only have one component of each type
+		return false;
+	}
+
+	//Assign _SceneActor before calling base class AddComponent, so that component can access SceneActor in its Create() method
+	Component->_SceneActor = this;
 	if (__super::AddComponent(Component))
 	{
-		Component->_SceneActor = this;
 		return true;
 	}
+
+	//failed to add component, reset _SceneActor pointer
+	Component->_SceneActor = nullptr;
 	return false;
 }
 

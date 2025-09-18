@@ -35,7 +35,6 @@ void Demo7Billboard::Start()
 	ground->Scale = Vector3{ 2, 1, 2 };
 	ModelComponent* animEnemyComponent = ground->CreateAndAddComponent<ModelComponent>();
 	animEnemyComponent->Load3DModel("../../resources/models/obj/bridge.obj", "../../resources/models/obj/bridge_diffuse.png");
-	ground->AddComponent(animEnemyComponent);
 
 	//Load a texture as billboard image
 	billboardImage = LoadTexture("../../resources/textures/p15-1.png");    // Our billboard texture

@@ -58,7 +58,6 @@ void Demo6VertexNormal::Start()
 	FNPlayerModel->_AlwaysSmoothNormal = false;
 	FNPlayerModel->Load3DModel("../../resources/models/gltf/robot.glb");
 	FNPlayerModel->SetAnimation(6);
-	FNActor->AddComponent(FNPlayerModel);
 	for (int i = 0; i < FNPlayerModel->GetModel()->materialCount; i++) {
 		FNPlayerModel->GetModel()->materials[i].shader = shader;
 	}
@@ -70,7 +69,6 @@ void Demo6VertexNormal::Start()
 	ModelComponent* VNPlayerModel = VNActor->CreateAndAddComponent<ModelComponent>();
 	VNPlayerModel->Load3DModel("../../resources/models/gltf/robot.glb");
 	VNPlayerModel->SetAnimation(6);
-	VNActor->AddComponent(VNPlayerModel);
 	for (int i = 0; i < VNPlayerModel->GetModel()->materialCount; i++) {
 		VNPlayerModel->GetModel()->materials[i].shader = shader;
 	}

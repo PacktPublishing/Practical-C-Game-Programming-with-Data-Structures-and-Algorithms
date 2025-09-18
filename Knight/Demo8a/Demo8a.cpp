@@ -43,7 +43,6 @@ void Demo8a::Start()
 	AnimModelComponent = Character->CreateAndAddComponent<ModelComponent>();
 	AnimModelComponent->Load3DModel("../../resources/models/m3d/cesium_man.m3d");
 	AnimModelComponent->SetAnimation(0);
-	Character->AddComponent(AnimModelComponent);
 }
 
 void Demo8a::Update(float ElapsedSeconds)

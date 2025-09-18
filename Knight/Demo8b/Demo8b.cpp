@@ -47,7 +47,6 @@ void Demo8b::Start()
 	AnimModelComponent->Load3DModel("../../resources/models/gltf/robot.glb");
 	AnimModelComponent->SetAnimation(AnimationStates[CurrentAnimIndex]);   //Set animation 4-idle
 	AnimModelComponent->SetAnimationMode(ModelComponent::eAnimMode::Linear_interpolation);
-	Character->AddComponent(AnimModelComponent);
 }
 
 void Demo8b::Update(float ElapsedSeconds)

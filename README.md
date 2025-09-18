@@ -18,6 +18,16 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
   &#8287;&#8287;&#8287;&#8287;&#8287;
 </p>
 
+<details open>
+  <summary><h2>Latests updates and bug fixes</summary>
+<p>
+  Here is a quick summary of recent updates and bug-fixes outside the bigger monthly updates.    
+ </p>
+<ul>
+  <li>[2025/9/17] Fixed a bug in various demons ModelComponents were added to the SceneActor twice.</li>
+</ul>
+</details>
+
 <details open> 
   <summary><h2>September 2025 update - new sample and three mini sample cookbooks!</summary>
 <p>

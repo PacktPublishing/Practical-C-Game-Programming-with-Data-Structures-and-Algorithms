@@ -96,6 +96,13 @@ bool SceneObject::AddComponent(Component* Component)
 	}
 	Component->_SceneObject = this;
 	_Components[Component->Type] = Component;
+
+	if (Component->Create() == false)
+	{
+		Component->_SceneObject = nullptr;
+		return false;
+	}
+
 	return true;
 }
 
