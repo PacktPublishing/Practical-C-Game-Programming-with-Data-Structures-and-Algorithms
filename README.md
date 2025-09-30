@@ -34,8 +34,8 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 <p>
   Here is a quick summary of recent updates and bug-fixes outside the bigger monthly updates.    
  </p>
-<ul>
-  <li>[2025/9/17] Fixed a bug in various demons ModelComponents were added to the SceneActor twice.</li>
+<ul>  
+  <li>[2025/9/17] Fixed a bug in various demos ModelComponents were added to the SceneActor twice.</li>
 </ul>
 </details>
 
