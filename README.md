@@ -18,6 +18,17 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
   &#8287;&#8287;&#8287;&#8287;&#8287;
 </p>
 
+<details open> 
+  <summary><h2>October 2025 update - new K-d tree sample and mini sample cookbook!</summary>
+<p>
+  We've released a new K-d tree sample that demonstrates how to performe spatial query of near-by objects when you have hundreds/thousands objects on the terrain. We've also included a new mini-cookbooks that explain the logic behind the code in detail.    
+ </p>    
+<ul>
+  <li>A new <i>BonusKdTreeDemo</i> sample project demonstrates how to use K-d tree to speed up spatial queries of large amount objects.</li> 
+  <li>A 17-page mini e-booklet <b>BonusKdTreeDemo_MiniCookBook.pdf</b> is provided under <i>BonusFreeBooklets/SampleMiniCookbooks/</i> folder to explain how the algorithm works.</li>
+</ul>
+</details>
+
 <details open>
   <summary><h2>Latests updates and bug fixes</summary>
 <p>
@@ -54,7 +65,7 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 </ul>
 </details>
 
-<details open> 
+<details close> 
   <summary><h2>August 2025 Update - Improving the Game World Demo Project</summary>
 <p>
   We have updated the Git repository with one more bonus demo project <b>BonusGameWorld02</b> for our readers. This demo optimizes the performance by:
@@ -68,7 +79,7 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 <p>Make sure to rebuild the whole project solution before running any demo project.</p>
 </details>
 
-<details open> 
+<details close> 
   <summary><h2>July 2025 Update - New Game World Demo Project</summary>
 <p>
   We have updated the Git repository with one more bonus demo project for our readers. The primary purpose is to demonstrate how we can combine the features we learned throughout the book:
