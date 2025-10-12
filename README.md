@@ -19,6 +19,17 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 </p>
 
 <details open> 
+  <summary><h2>Thanksgiving(Canada) 2025 update - new sparse hash grid sample and mini sample cookbook!</summary>
+<p>
+  We've released a new sparse hash grid sample that demonstrates how to performe spatial query of near-by objects when you have thousands objects on the terrain. We've also included a new mini-cookbooks that explain the logic behind the code in detail.    
+ </p>    
+<ul>
+  <li>A new <i>BonusHashGridDemo</i> sample project demonstrates how to use K-d tree to speed up spatial queries of large amount objects.</li> 
+  <li>A 14-page mini e-booklet <b>BonusHashGridDemo_MiniCookBook.pdf</b> is provided under <i>BonusFreeBooklets/SampleMiniCookbooks/</i> folder to explain how the algorithm works.</li>
+</ul>
+</details>
+
+<details open> 
   <summary><h2>October 2025 update - new K-d tree sample and mini sample cookbook!</summary>
 <p>
   We've released a new K-d tree sample that demonstrates how to performe spatial query of near-by objects when you have hundreds/thousands objects on the terrain. We've also included a new mini-cookbooks that explain the logic behind the code in detail.    
