@@ -19,6 +19,21 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 </p>
 
 <details open> 
+  <summary><h2>November 2025 update - new match-three game sample and mini sample cookbook!</summary>
+<p>
+  We've released a new Match-three game sample. This project demonstrates how Match-3 puzzles—such as Candy Crush or Bejeweled—are deceptively simple on the surface.
+Yet behind every falling candy lies a tight combination of bit manipulation, heuristic search, flood-fill algorithms, and state machines.    
+<ul>
+  <li>How to identify horizontal/vertical/cross shape/T-shape matches of candies.</li> 
+  <li>Use heuristic search to find best matches among all available matches.</li>
+  <li>Implement memory-efficient grid representation using bit-board manipulation.</li>
+  <li>Use flood-fill algorithm to identify connected candies.</li>
+  <li>Implement game state management using finite state machine (FSM).</li>>
+</ul>
+</p>
+</details>
+
+<details open> 
   <summary><h2>Thanksgiving(Canada) 2025 update - new sparse hash grid sample and mini sample cookbook!</summary>
 <p>
   We've released a new sparse hash grid sample that demonstrates how to performe spatial query of near-by objects when you have thousands objects on the terrain. We've also included a new mini-cookbooks that explain the logic behind the code in detail.    
