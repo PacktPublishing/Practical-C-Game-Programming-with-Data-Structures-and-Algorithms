@@ -27,10 +27,8 @@ bool Match3GameSession::Create()
 
 //Main state machine: handles input (drag/click/swap), swap animation, revert if no match, clear phase (mask or “missile wave” for color bomb), 
 // collapse/refill cycles, shuffle when stuck, camera shake/flash/slow-mo timing, particle system update, and idle hint refresh.
-void Match3GameSession::Update(float elapsedTime)
+void Match3GameSession::Update(float dtReal)
 {
-	dtReal = elapsedTime;
-
     dt = (slowmoT > 0.f) ? (dtReal * SLOWMO_SCALE) : dtReal;
     now = (float)GetTime();
     if (slowmoT > 0.f)
@@ -66,6 +64,7 @@ void Match3GameSession::Update(float elapsedTime)
 
                 if (sp == SP_CrossBomb || sp == SP_ColorBomb)
                 {
+
                     if (sp == SP_CrossBomb)
                     {
                         std::vector<std::vector<bool>> m(ROWS, std::vector<bool>(COLS, false));
@@ -105,7 +104,6 @@ void Match3GameSession::Update(float elapsedTime)
 
             {
                 Vec2i B{ dragStart.r + dr, dragStart.c + dc };
-
                 if (bd.InBounds(dragStart.r, dragStart.c) && bd.InBounds(B.r, B.c) && (abs(dr) + abs(dc) == 1)) 
                 {
                     swap.a = dragStart; 
@@ -207,8 +205,7 @@ SKIP_DRAG_SWAP:;
             {
                 bd.offX[swap.a.r][swap.a.c] = bd.offY[swap.a.r][swap.a.c] = 0;
                 bd.offX[swap.b.r][swap.b.c] = bd.offY[swap.b.r][swap.b.c] = 0;
-                swap.reset(); 
-                state = Idle;
+                swap.reset(); state = Idle;
             }
         }
     }
@@ -575,8 +572,8 @@ void Match3GameSession::Draw()
         float phase = fmodf((float)now, HINT_BLINK_PERIOD) / HINT_BLINK_PERIOD;
         float a = 0.6f * (0.5f + 0.5f * sinf(phase * 2 * PI));
         Color hc = Color{ 255,255,0,(unsigned char)(a * 255) };
-        DrawRectangleRoundedLinesEx(cellRect(hintA.r, hintA.c), 0.35f, 6, 10, hc);
-        DrawRectangleRoundedLinesEx(cellRect(hintB.r, hintB.c), 0.35f, 6, 10, hc);
+        DrawRectangleRoundedLinesEx(cellRect(hintA.r, hintA.c), 0.35f, 6, 4, hc);
+        DrawRectangleRoundedLinesEx(cellRect(hintB.r, hintB.c), 0.35f, 6, 4, hc);
     }
 
     // Particles

@@ -19,6 +19,13 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 </p>
 
 <details open> 
+  <summary><h2>December 2025 update - new 'Coverflow' 3D UI sample and mini sample cookbook!</summary>
+<p>
+  We've released a new sample to demonstrate how to implement Coverflow style 3D UI. This project demonstrates how to use <i>recyclable-list</i> to display and scroll with a large amount of data with limited number of visual elements. In this example you scroll with 1000 poker cards but only 31 of them are visible at the same time. This sameple is best tried after you finish reading of Chapter 4 of the book. 
+</p>
+</details>
+
+<details open> 
   <summary><h2>November 2025 update - new match-three game sample and mini sample cookbook!</summary>
 <p>
   We've released a new Match-three game sample. This project demonstrates how Match-3 puzzles—such as Candy Crush or Bejeweled—are deceptively simple on the surface.
@@ -28,7 +35,7 @@ Yet behind every falling candy lies a tight combination of bit manipulation, heu
   <li>Use heuristic search to find best matches among all available matches.</li>
   <li>Implement memory-efficient grid representation using bit-board manipulation.</li>
   <li>Use flood-fill algorithm to identify connected candies.</li>
-  <li>Implement game state management using finite state machine (FSM).</li>>
+  <li>Implement game state management using finite state machine (FSM).</li>
 </ul>
 </p>
 </details>
