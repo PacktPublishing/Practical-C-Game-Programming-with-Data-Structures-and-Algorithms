@@ -19,6 +19,16 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
 </p>
 
 <details open> 
+  <summary><h2>March 2026 update</summary>
+<p>
+<ul>
+  <li>A minor update allows the application to specify a custom resolution during launch. The Knight application class provides a public virtual function OnConfigKnightApp(). Override this function in your derived application class and set the desired resolution using Config.WindowWidth and Config.WindowHeight.</li> 
+  <li>Supporting of non-Windows platform(s) is on its way.</li>
+</ul>
+</p>
+</details>
+
+<details open> 
   <summary><h2>December 2025 update - new 'Coverflow' 3D UI sample and mini sample cookbook!</summary>
 <p>
   We've released a new sample to demonstrate how to implement Coverflow style 3D UI. This project demonstrates how to use <i>recyclable-list</i> to display and scroll with a large amount of data with limited number of visual elements. In this example you scroll with 1000 poker cards but only 31 of them are visible at the same time. This sameple is best tried after you finish reading of Chapter 4 of the book. 
