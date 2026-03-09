@@ -29,11 +29,10 @@ void Knight::OnReleaseDefaultResources()
 {
 }
 
+//This is called after the default resources are created
+//It perform a check to ensure we have some default resources created
 void Knight::AfterCreateDefaultResources()
 {
-	//This is called after the default resources are created
-	//It perform a check to ensure we have some default resources created
-
 	//Check if user has registered any render passes
 	if (_RenderPasses.empty() && Config.EnableDefaultRenderPasses == true)
 	{
@@ -109,13 +108,18 @@ void Knight::AfterReleaseDefaultResources()
 
 void Knight::Start()
 {
+	//Allow user to configure the Knight application before it starts
 	OnConfigKnightApp();
 
-	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_TITLE);
+	//Validate the configuration settings and set default values if necessary
+	ApplyAppConfig();
+
+	InitWindow(Config.WindowWidth, Config.WindowHeight, Config.WindowTitle.c_str());
 	SetTargetFPS(TARGET_FPS);
 
 	_Scene = new Scene();
 
+	//Allow user to create default resources, such as font, shaders, textures, etc.
 	OnCreateDefaultResources();
 
 	AfterCreateDefaultResources();
@@ -140,6 +144,11 @@ void Knight::GameLoop()
 		Update(GetFrameTime());
 
 		DrawOffscreen();
+
+		if (IsKeyPressed(KEY_ENTER))
+		{
+			TakeScreenshot("screenshot.png");
+		}
 
 		BeginDrawing();
 		ClearBackground(DARKGRAY);
@@ -224,7 +233,22 @@ void Knight::DrawText(const char* text, int x, int y, int size, const Color& col
 
 void Knight::OnConfigKnightApp()
 {
+	Config.WindowWidth = DEFAULT_SCREEN_WIDTH;
+	Config.WindowHeight = DEFAULT_SCREEN_HEIGHT;
+	Config.WindowTitle = DEFAULT_APP_TITLE;
+	Config.ResourcesBasePath = RESOURCE_ROOT_PATH;
+}
 
+void Knight::ApplyAppConfig()
+{
+	if (Config.WindowWidth <= 0)
+		Config.WindowWidth = DEFAULT_SCREEN_WIDTH;
+	if (Config.WindowHeight <= 0)
+		Config.WindowHeight = DEFAULT_SCREEN_HEIGHT;
+	if (Config.WindowTitle.empty())
+		Config.WindowTitle = DEFAULT_APP_TITLE;
+	if (Config.ResourcesBasePath.empty())
+		Config.ResourcesBasePath = RESOURCE_ROOT_PATH;
 }
 
 void Knight::SaveScreenshot(const char* fileName)
@@ -236,8 +260,8 @@ void Knight::SaveScreenshot(const char* fileName)
 		return; 
 	}
 
-	unsigned char* imgData = rlReadScreenPixels(SCREEN_WIDTH, SCREEN_HEIGHT);
-	Image image = { imgData, SCREEN_WIDTH, SCREEN_HEIGHT, 1, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 };
+	unsigned char* imgData = rlReadScreenPixels(Config.WindowWidth, Config.WindowHeight);
+	Image image = { imgData, Config.WindowWidth, Config.WindowHeight, 1, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 };
 
 	char path[512] = { 0 };
 	strcpy_s(path, TextFormat("%s/%s", "./", GetFileName(fileName)));
