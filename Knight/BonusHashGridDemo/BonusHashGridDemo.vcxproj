@@ -134,9 +134,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BonusHashGridDemo.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BonusHashGridDemo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BonusHashGridDemo.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

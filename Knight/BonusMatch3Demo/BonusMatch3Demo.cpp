@@ -1,4 +1,4 @@
-﻿// Bonus Match-3 Game Demo  
+// Bonus Match-3 Game Demo  
 #include "BonusMatch3Demo.h"
 
 //main entry point for the application
@@ -44,6 +44,6 @@ void BonusMatch3Demo::OnCreateDefaultResources()
 {
     __super::OnCreateDefaultResources();
     //Loads a better TrueType font to display text information on the screen
-    _Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+    _Font = LoadFontEx((Config.ResourcesBasePath + "fonts/sparky.ttf").c_str(), 32, 0, 0);
 }
 

@@ -7,17 +7,17 @@ RNGStreams gRng;
 bool Match3GameSession::Create()
 {
     //load chip textures
-    chipTextures[0] = LoadTexture("../../resources/textures/chip-blue.png");
-    chipTextures[1] = LoadTexture("../../resources/textures/chip-red.png");
-    chipTextures[2] = LoadTexture("../../resources/textures/chip-orange.png");
-    chipTextures[3] = LoadTexture("../../resources/textures/chip-green.png");
-    chipTextures[4] = LoadTexture("../../resources/textures/chip-purple.png");
+    chipTextures[0] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-blue.png").c_str());
+    chipTextures[1] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-red.png").c_str());
+    chipTextures[2] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-orange.png").c_str());
+    chipTextures[3] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-green.png").c_str());
+    chipTextures[4] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-purple.png").c_str());
 
-    chipTextures[10] = LoadTexture("../../resources/textures/chip-crossbomb.png");
-    chipTextures[11] = LoadTexture("../../resources/textures/chip-rocketbomb.png");
+    chipTextures[10] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-crossbomb.png").c_str());
+    chipTextures[11] = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/chip-rocketbomb.png").c_str());
 
-    bkgd = LoadTexture("../../resources/textures/halloween.png");
-    missile = LoadTexture("../../resources/textures/flash00.png");
+    bkgd = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/halloween.png").c_str());
+    missile = LoadTexture((Knight::Instance->Config.ResourcesBasePath + "textures/flash00.png").c_str());
 
     bd.FillNoMatches();
     bd.FindAnyMoveHeuristic(hintA, hintB, &hintScore);
@@ -25,7 +25,7 @@ bool Match3GameSession::Create()
 	return true;
 }
 
-//Main state machine: handles input (drag/click/swap), swap animation, revert if no match, clear phase (mask or “missile wave” for color bomb), 
+//Main state machine: handles input (drag/click/swap), swap animation, revert if no match, clear phase (mask or ?missile wave? for color bomb), 
 // collapse/refill cycles, shuffle when stuck, camera shake/flash/slow-mo timing, particle system update, and idle hint refresh.
 void Match3GameSession::Update(float dtReal)
 {
@@ -608,7 +608,7 @@ void Match3GameSession::Draw()
     EndMode2D();
 }
 
-//Eases each tile’s offX/offY toward 0 at a fixed fall speed; returns whether any tile is still animating.
+//Eases each tile?s offX/offY toward 0 at a fixed fall speed; returns whether any tile is still animating.
 bool Match3GameSession::AnimateOffsetsTowardZero(float dt)
 {
     bool active = false;
@@ -727,7 +727,7 @@ float Match3GameSession::ComputeLargestClusterMedianDelay(int targetColor)
     return bestDel[bestDel.size() / 2];
 }
 
-//Configures “missile wave” clear: schedules a missile to each tile of that color with radial delays, 
+//Configures ?missile wave? clear: schedules a missile to each tile of that color with radial delays, 
 // arms mid-trigger FX (slow-mo/flash/shake), and resets explosion timers.
 void Match3GameSession::StartColorBombWave(int originR, int originC, int color)
 {

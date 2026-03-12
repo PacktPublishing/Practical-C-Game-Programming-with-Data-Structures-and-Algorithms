@@ -1,4 +1,4 @@
-﻿#include "BonusCoverflow3DUI.h"
+#include "BonusCoverflow3DUI.h"
 
 // main entry function - the usual Knight app setting
 int main()
@@ -35,7 +35,7 @@ void BonusCoverFlow3DUI::Start()
 
 		// File path for this item's texture. In this case, all the poker card images.
         char pathBuf[128];
-        snprintf(pathBuf, sizeof(pathBuf), "../../resources/textures/PokerDeckCards/%d.png", i % 52);
+        snprintf(pathBuf, sizeof(pathBuf), (Config.ResourcesBasePath + "textures/PokerDeckCards/%d.png").c_str(), i % 52);
         data.texturePath = pathBuf;
 
         items.push_back(data);
@@ -223,7 +223,7 @@ void BonusCoverFlow3DUI::OnCreateDefaultResources()
 {
     __super::OnCreateDefaultResources();
     //Loads a better TrueType font to display text information on the screen
-    _Font = LoadFontEx("../../resources/fonts/sparky.ttf", 32, 0, 0);
+    _Font = LoadFontEx((Config.ResourcesBasePath + "fonts/sparky.ttf").c_str(), 32, 0, 0);
 }
 
 //Handle selection change(with sliding)

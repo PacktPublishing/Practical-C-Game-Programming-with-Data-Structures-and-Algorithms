@@ -22,7 +22,8 @@ Zhenyu George Li, Charles Shih-I Yeh</p>
   <summary><h2>March 2026 update</summary>
 <p>
 <ul>
-  <li>A minor update allows the application to specify a custom resolution during launch. The Knight application class provides a public virtual function OnConfigKnightApp(). Override this function in your derived application class and set the desired resolution using Config.WindowWidth and Config.WindowHeight.</li> 
+  <li>Replace hardcoded resource path with a configurable base laoding path to all resources. Check Demo1.cs for details.</li>
+  <li>Minor update to allow application to set different application resolution.</li> 
   <li>Supporting of non-Windows platform(s) is on its way.</li>
 </ul>
 </p>
